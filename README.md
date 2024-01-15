@@ -30,3 +30,4 @@ MANDATORY_MANPATH /home/luis/Documentos/c/cursus/circle3/fract-ol/src/minilibx-l
 
 7.- Play with the 3 windows `test/mlx-test` the configuration process has created and study `main.c` that created them. 
 
+https://www.youtube.com/watch?v=FFftmWSzgmk
