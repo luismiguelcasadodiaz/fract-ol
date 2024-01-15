@@ -4,11 +4,11 @@ This project is about creating graphically beautiful fractals.
 # First Steps
 1.- Download libraries to `fract-ol/src` directory
 
-.- inilibx-linux.tgz
+minilibx-linux.tgz
 
-.- minilibx_mms_beta.tgz
+minilibx_mms_beta.tgz
 
-.- minilibx_opengl.tgz
+minilibx_opengl.tgz
 
 2.- Unzip them with `gunzip filename.tgz` and extract files with `tar --extract -f filename.tar`
 
@@ -26,7 +26,7 @@ MANDATORY_MANPATH /home/luis/Documentos/c/cursus/circle3/fract-ol/src/minilibx-l
 
 [MinilibX : Events](https://elearning.intra.42.fr/notions/minilibx/subnotions/mlx-events/videos/minilibx-events)
 
-6.- Create libmlx.a library `./configure' from minilibx-linux. `make -F Makefile.gen show` shows flags requiered for compiling in your enviroment.
+6.- Create libmlx.a library `./configure' from minilibx-linux.  `make -F Makefile.gen show` shows flags required for compiling in your environment.
 
-7.- Play with the 3 windows `test/mlx-test` the configuration process has created and study main.c that created. 
+7.- Play with the 3 windows `test/mlx-test` the configuration process has created and study `main.c` that created them. 
 
