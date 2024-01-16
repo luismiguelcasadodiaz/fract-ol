@@ -1,26 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fenetre_1.c                                        :+:      :+:    :+:   */
+/*   fenetre.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/01/14 10:37:51 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/01/16 22:31:07 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
+#include <stdlib.h>
+#include "fractol.h"
 
+/* ************************************************************************** */
+/**
+   @file main.c
+   @brief main() helps tha author to learnt minilibx
+
+   @param[in]  s: The stack to calculate value's future positions.
+
+   @details
+   mlx_init() initializes the conexion with the windows enviroment, eithe X
+   or opengl.
+
+   mlx_init returns a void * pointer wha have to check for error.
+
+   Loops the stack. For each node loops the stack couting how manu values
+   are lower than current (external loop node) node's value.
+
+   @author LMCD (Luis Miguel Casado Díaz)
+ *****************************************************************************/
+//https://aurelienbrabant.fr/blog/events-with-the-minilibxi
+//https://03-jon-perez.gitbook.io/coding-library/c/minilibx
+//https://harm-smits.github.io/42docs/libs/minilibx
 int	main(void)
 {
+	t_data	win1;
+	t_data 	win2;
 	void	*mlx_ptr;
-	void	*win1_ptr;
-	void	*win2_ptr;
-
+	
 	mlx_ptr = mlx_init();
-	win1_ptr = mlx_new_window(mlx_ptr, 500, 500, "LUIS");
-	win2_ptr = mlx_new_window(mlx_ptr, 500, 500, "SANDRA");
-	mlx_loop(mlx_ptr);
+	if (mlx_ptr == NULL)
+		return (MLX_ERROR);
+	win1.mlx_ptr = mlx_ptr;
+	win1.win_ptr = mlx_new_window(win1.mlx_ptr, 500, 500, "LUIS");
+	if (win1.win_ptr == NULL)
+	{
+		free(win1.mlx_ptr);
+		return (MLX_ERROR);
+	}	
+	/*
+	win2.mlx_ptr = mlx_ptr;
+	win2_ptr = mlx_new_window(win2.mlx_ptr, 500, 500, "SANDRA");
+	if (win2_ptr == NULL)
+		return (MLX_ERROR);
+
+	*/
+	mlx_loop(win1.mlx_ptr);
+	mlx_destroy_window(win1.mlx_ptr, win1.win_ptr);
+	mlx_destroy_display(win1.mlx_ptr);
+	free(win1.mlx_ptr);
 	return (0);
 }
