@@ -8,8 +8,12 @@ UNAME := $(shell uname)
 #CFLAGS= -I$(INC) -O3 -I.. -g
 CFLAGS= -I$(INC) -O3 -I../../inc -g
 
-NAME= fenetre
-SRC = fenetre.c
+NAME	= 	fenetre
+SRC 	= 	fenetre.c \
+			../win/win_h_key_press.c \
+			../win/win_h_key_relea.c \
+			../win/win_h_not_event.c
+
 OBJ = $(SRC:%.c=%.o)
 
 LFLAGS = -L../../lib -lmlx -L$(INCLIB) -lXext -lX11 -lm
@@ -31,6 +35,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 show:
 	@printf "UNAME		: $(UNAME)\n"
 	@printf "NAME  		: $(NAME)\n"

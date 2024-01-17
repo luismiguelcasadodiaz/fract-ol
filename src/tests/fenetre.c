@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/01/16 22:31:07 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:58:56 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ int	main(void)
 		return (MLX_ERROR);
 
 	*/
+	mlx_loop_hook(win1.mlx_ptr, &win_h_not_event, &win1);
+	mlx_key_hook(win1.win_ptr, &win_h_key_press, &win1);
 	mlx_loop(win1.mlx_ptr);
 	mlx_destroy_window(win1.mlx_ptr, win1.win_ptr);
 	mlx_destroy_display(win1.mlx_ptr);
-	free(win1.mlx_ptr);
+	//free(win1.mlx_ptr);
 	return (0);
 }
