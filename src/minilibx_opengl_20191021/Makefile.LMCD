@@ -1,0 +1,109 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/01 09:19:25 by luicasad          #+#    #+#              #
+#    Updated: 2024/02/01 11:29:46 by luicasad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+ 
+# ============================================================================ #
+#                                 COLORS                                       #
+# ============================================================================ #
+DEF_COLOR	=	\033[0;39m
+GRAY		=	\033[0;90m
+RED			=	\033[0;91m
+GREEN		=	\033[0;92m
+YELLOW		=	\033[0;93m
+BLUE		=	\033[0;94m
+MAGENTA		=	\033[0;95m
+CYAN		=	\033[0;96m
+WHITE		=	\033[0;97m
+BLACK		=	\033[0;99m
+ORANGE		=	\033[38;5;209m
+BROWN		=	\033[38;2;184;143;29m
+DARK_GRAY	=	\033[38;5;234m
+MID_GRAY	=	\033[38;5;245m
+DARK_GREEN	=	\033[38;2;75;179;82m
+DARK_YELLOW	=	\033[38;5;143m
+# ============================================================================ #
+#                                 TARGETS                                      #
+# ============================================================================ #
+
+NAME		=	libmlx.a
+# ============================================================================ #
+#                                 FOLDERS                                      #
+# ============================================================================ #
+OBJDIR		= ../../obj/
+INCDIR		= ../../inc/
+LIBDIR		= ../../lib/
+OBJDIR		= 
+#INCDIR		=
+#LIBDIR		=
+vpath %.a $(LIBDIR)
+# ============================================================================ #
+#                               COMPILER SETUP                                 #
+# ============================================================================ #
+CC			=	cc
+CFLAGS		=	-g -Wall -Wextra  -Werror -O2 
+# add to match string put with X11 in size and position
+CFLAGS+= -DSTRINGPUTX11
+HEADS		=	-I$(INCDIR)
+# ============================================================================ #
+#                                 SOURCES                                      #
+# ============================================================================ #
+SRC			= mlx_init_loop.m \
+			  mlx_int_str_to_wordtab.c \
+			  mlx_mouse.m \
+			  mlx_new_image.m \
+			  mlx_new_window.m \
+			  mlx_opengl.m \
+			  mlx_png.c \
+			  mlx_shaders.c \
+			  mlx_xpm.c 
+
+#			  mlx_rgb.c  
+
+_OBJ1	=$(SRC:.c=.o)
+_OBJS	=$(_OBJ1:.m=.o)
+OBJS	= $(addprefix $(OBJDIR), $(_OBJS))
+
+$(info source files $(SRC))
+$(info object files $(OBJS))
+
+all: $(NAME)
+
+$(NAME):$(OBJS)
+	@echo "$(BLUE)MLIBX ========== GATHERING ALL OBJECTS ====================$(DEF_COLOR)"
+	ar -rcs $(LIBDIR)$(NAME) $?
+	ranlib $(LIBDIR)$(NAME)
+
+# For each c file create its object file.
+#$(OBJS): $(SRCS) 
+%.o: %.c Makefile 
+	@echo "$(BLUE)MLIBX ========== COMPILING *.c OBJECTS ====================$(DEF_COLOR)"
+	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS)
+
+%.o: %.m Makefile 
+	@echo "$(BLUE)MLIBX ========== COMPILING *.m OBJECTS ====================$(DEF_COLOR)"
+	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS)
+
+#for each c file create its dependency file 
+#READ GNU make  manual 4.14 Generating Prerequisites Automatically.
+#READ GNU gcc manuel 3.13 Options controlling the preprocessor.
+%.d: %.c
+	@set -e; rm -f $@; \
+	$(CC) $(HEADS) -MM $< > $@.$$$$ ; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+    rm -f $@.$$$$
+clean:
+	rm -f $(LIBDIR)$(NAME) 
+	rm -f $(OBJS) 
+	rm -f *~
+	rm -f mlx_app
+
+re: clean *.c

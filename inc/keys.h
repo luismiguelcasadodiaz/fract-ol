@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:25:08 by luicasad          #+#    #+#             */
-/*   Updated: 2024/01/17 17:39:15 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:35:08 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define KEY_L 108
 # define KEY_M 109
 # define KEY_N 110
-# define KEY_Ñ 241
 # define KEY_O 111
 # define KEY_P 112
 # define KEY_Q 113
@@ -55,7 +54,4 @@
 # define KEY_CTRL_RIGHT 65508
 # define KEY_SHIFT_LEFT 65505
 # define KEY_SHIFT_RIGHT 65506
-
-
-
 #endif
