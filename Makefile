@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/01 13:43:31 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/02 20:09:39 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,19 +70,17 @@ DBGFL			= -g
 CFLGS			= $(DBGFL) $(WRNFL) -c
 HEADS			= -I$(INCDIR)
 #LFLGS 			= -Wl,-v
-LFLGS 			= 
-
-INCLIB=$(INC)/../lib
+FRAMEWORKS		= -framework OpenGL -framework AppKit 
+#INCLIB=$(INC)/../lib
 
 
 #CFLAGS= -I$(INC) -O3 -I.. -g
-CFLAGS= -I$(INC) -O3 -I../../inc -g
+#CFLAGS= -I$(INC) -O3 -I../../inc -g
 
-NAME= h
-SRC = fenetre.c
-OBJ = $(SRC:%.c=%.o)
+#NAME= h
+#SRC = fenetre.c
+#OBJ = $(SRC:%.c=%.o)
 
-LFLAGS = -L../../lib -lmlx -L$(INCLIB) -lXext -lX11 -lm
 
 ifeq ($(UNAME), Darwin)
 	# mac
@@ -101,19 +99,17 @@ endif
 # ============================================================================ #
 NAMELIBMLIBX 		= libmlx.a
 PATH_MLIBX 		= $(addprefix $(SRCDIR_MLIBX), $(NAMELIBPRINTF))
-LOADLIBMLIBX 		= mlx
-
+LOADLIBMLIBX 		= mlx 
 #NAMELIBFT 		= libft.a
 #PATH_LIBFT 		= $(addprefix $(SRCDIR_LIBFT), $(NAMELIBFT))
-#LOADLIBFT 		= ft
-
+#LOADLIBFT 		= ftj
 #NAMELIBPSS 		= libpss.a
 #PATH_STACK 		= $(addprefix $(SRCDIR_STACK), $(NAMELIBPSS))
 #LOADLIBSS 		= pss
 
 #NAMELIBARGPA 		= libargpar.a
 #PATH_ARGPA 		= $(addprefix $(SRCDIR_ARGPA), $(NAMELIBARGPA))
-#LOADLIBARGPA 		= argpar
+kLOADLIBARGPA 		= argpar
 
 #MYLIBS			= $(NAMELIBPRINTF) $(NAMELIBFT) $(NAMELIBPSS) $(NAMELIBARGPA)
 MYLIBS			= $(NAMELIBMLIBX)
@@ -143,6 +139,18 @@ OBJS_TESTS = $(addprefix $(OBJDIR), $(SRCS_TESTS:.c=.o))
 DEPE_FRACT = $(addprefix $(OBJDIR), $(SRCS_FRACT:.c=.d))
 DEPE_BONUS = $(addprefix $(OBJDIR), $(SRCS_BONUS:.c=.d))
 DEPE_TESTS = $(addprefix $(OBJDIR), $(SRCS_TESTS:.c=.d))
+
+$(info fract source files $(SRCS_FRACT))
+$(info fract source paths $(FILE_FRACT))
+$(info fract object patha $(OBJS_FRACT))
+
+$(info bonus source files $(SRCS_BONUS))
+$(info bonus source paths $(FILE_BONUS))
+$(info bonus object patha $(OBJS_BONUS))
+
+$(info tests source files $(SRCS_TESTS))
+$(info tests source paths $(FILE_TESTS))
+$(info tests object patha $(OBJS_TESTS))
 # ============================================================================ #
 #                                 RULES                                        #
 # ============================================================================ #
@@ -185,16 +193,33 @@ makelibmlibx:
 
 # .......................... targets construction ............................ #
 $(FRACT): Makefile  $(OBJS_FRACT) -l$(LOADLIBMLIBX) 
-	@echo "$(GREEN)========== GATHERING PUSH_SWAP OBJECTS =============$(DEF_COLOR)"
-	$(CC) $(LFLGS) $(OBJS_FRACT) -o $@ $(LLIBS)
+	@echo "$(GREEN)========== GATHERING FRACTOL OBJECTS =============$(DEF_COLOR)"
+	$(CC) $(LFLGS) $(OBJS_FRACT) -o $@ $(LLIBS) $(FRAMEWORKS)
 
 $(BONUS): Makefile $(OBJS_BONUS) -l$(LOADLIBMLIBX)
-	@echo "$(MAGENTA)========== GATHERING CHECKER OBJECTS ===============$(DEF_COLOR)"
-	$(CC) $(LFLGS) $(OBJS_BONUS) -o $@ $(LLIBS)
+	@echo "$(ORANGE)======= GATHERING FRACTOL BONUS OBJECTS ============$(DEF_COLOR)"
+	$(CC) $(LFLGS) $(OBJS_BONUS) -o $@ $(LLIBS) $(FRAMEWORKS)
 
 $(TESTS): Makefile $(OBJS_TESTS) -l$(LOADLIBMLIBX)
-	@echo "$(MAGENTA)========== GATHERING CHECKER OBJECTS ===============$(DEF_COLOR)"
-	$(CC) $(LFLGS) $(OBJS_TESTS) -o $@ $(LLIBS)
+	@echo "$(MAGENTA)========== GATHERING TESTS OBJECTS ===============$(DEF_COLOR)"
+	$(CC) $(LFLGS) $(OBJS_TESTS) -o $@ $(LLIBS) $(FRAMEWORKS)
+
+# .......................... objects construction ............................ #
+$(OBJDIR)%.o: $(SRCDIR_FRACT)%.c $(INCDIR)$(HEADER_FRA)
+	@echo "$(GREEN)========== COMPILING FRACTOL FILES ===============$(DEF_COLOR)"
+	$(CC) $(CFLGS) $< -o $@ $(HEADS)  
+
+$(OBJDIR)%.o: $(SRCDIR_BONUS)%.c $(INCDIR)$(HEADER_BON)
+	@echo "$(ORANGE)========== COMPILING FRACTOL BONUS FILES ===============$(DEF_COLOR)"
+	$(CC) $(CFLGS) $< -o $@ $(HEADS)  
+
+$(OBJDIR)%.o: $(SRCDIR_TESTS)%.c $(INCDIR)$(HEADER_TES)
+	@echo "$(MAGENTA)========== COMPILING TESTS FILES ===============$(DEF_COLOR)"
+	$(info source files $(SRCS_TESTS))
+	$(info source paths $(FILE_TESTS))
+	$(info object patha $(OBJS_TESTS))
+	$(CC) $(CFLGS) $< -o $@ $(HEADS)  
+
 
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
@@ -209,17 +234,26 @@ show:
 	@printf "OBJ		:\n	$(OBJ)\n"
 
 clean:
-	rm -f $(NAME) $(OBJ) *~ core *.core
+	rm -f $(NAME) $(OBJ)
+	rm -rf $(OBJDIR)
 
-re: clean all
+
+fclean: clean
+	rm $(FRACT)
+	rm $(BONUS)
+	rm $(TESTS)
+	rmdir $(OBJDIR)
+	rmdir $(LIBDIR)
+
+re: fclean all
 
 
 norma:
 	$(MAKE) -C $(SRCDIR_MLIBX)  norma
 	@echo "$(GREEN)============ CHECKING NORME $(FRACT) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_FRACT) 
-	@echo "$(MAGENTA)========== CHECKING NORME $(BONUS) ==============$(DEF_COLOR)"
+	@echo "$(ORANGE)========== CHECKING NORME $(BONUS) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_BONUS)
-	@echo "$(RED)========== CHECKING NORME $(TESTS) ==============$(DEF_COLOR)"
+	@echo "$(MAGENTA)========== CHECKING NORME $(TESTS) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_TESTS)
 	norminette $(INCDIR)
