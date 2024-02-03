@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/02 20:14:56 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:06:06 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,17 @@ int	main(void)
 		free(win1.mlx_ptr);
 		return (MLX_ERROR);
 	}	
-	/*
 	win2.mlx_ptr = mlx_ptr;
 	win2_ptr = mlx_new_window(win2.mlx_ptr, 500, 500, "SANDRA");
 	if (win2_ptr == NULL)
 		return (MLX_ERROR);
 
-	*/
 	mlx_loop_hook(win1.mlx_ptr, &win_h_not_event, &win1);
 	mlx_key_hook(win1.win_ptr, &win_h_key_press, &win1);
 	mlx_loop(win1.mlx_ptr);
 	mlx_destroy_window(win1.mlx_ptr, win1.win_ptr);
-	mlx_destroy_display(win1.mlx_ptr);
+//
+//mlx_destroy_display(win1.mlx_ptr);
 	//free(win1.mlx_ptr);
 	return (0);
 }

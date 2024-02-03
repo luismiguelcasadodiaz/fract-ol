@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/02 20:09:39 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/03 17:45:44 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,10 @@ LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX)
 # ============================================================================ #
 
 HEADER_FRA	=	fractol.h
-SRCS_FRACT	= 	fractol.c
+SRCS_FRACT	= 	fractol.c \
+				win_h_key_press.c \
+				win_h_key_relea.c \
+				win_h_not_event.c
 
 HEADER_BON	=	fractol_bonus.h
 SRCS_BONUS	 =	fractol_bonus.c

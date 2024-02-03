@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   keys_ubuntu.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 17:25:08 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/01 12:35:08 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/03 18:10:00 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/03 18:10:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef KEYS_UBUNTU_H
+# define KEYS_UBUNTU_H
 
 # define KEY_A 97
 # define KEY_B 98
