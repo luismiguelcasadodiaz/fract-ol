@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_key_relea.c                                  :+:      :+:    :+:   */
+/*   win_pixel_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/05 19:01:49 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/05 19:54:06 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/05 22:01:55 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
-int	win_h_key_relea(int	keysym, t_win *data)
+void	win_pixel_put(t_win w, int x, int y, int color)
 {
-	if (data->win_ptr == NULL)
-		printf("NULL POINTER");
-	printf("Keypress: %d\n", keysym);
-	return (0);
-}
+	char *dst;
+	int	offset_y;
+	int	offset_x;
+
+	offset_y = y * w.img.line_length;
+	offset_x = x * (w.img.bits_per_pixel / 8);
+	dst = w.img.addr + offset_y + offset_x; 
+	*(unsigned int *)dst = color;
+} 

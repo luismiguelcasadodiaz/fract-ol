@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/05 17:49:08 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/05 19:53:36 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,7 +139,8 @@ HEADER_FRA	=	fractol.h
 SRCS_FRACT	= 	fractol.c \
 				win_h_key_press.c \
 				win_h_key_relea.c \
-				win_h_not_event.c
+				win_h_not_event.c \
+				win_pixel_put.c
 
 HEADER_BON	=	fractol_bonus.h
 SRCS_BONUS	 =	fractol_bonus.c
