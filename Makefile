@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/03 17:45:44 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/05 17:49:08 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,11 @@ DBGFL			= -g
 CFLGS			= $(DBGFL) $(WRNFL) -c
 HEADS			= -I$(INCDIR)
 #LFLGS 			= -Wl,-v
-FRAMEWORKS		= -framework OpenGL -framework AppKit 
+ifeq ($OPSYS), Darwin)
+	FRAMEWORKS		= -framework OpenGL -framework AppKit 
+else
+	FRAMEWORKS		=
+endif
 #INCLIB=$(INC)/../lib
 
 
@@ -91,7 +95,6 @@ else ifeq ($(UNAME), FreeBSD)
 else
 	#Linux and others...
 	CC	= cc
-	LFLAGS += -lbsd
 endif
 
 # ============================================================================ #
@@ -115,6 +118,19 @@ kLOADLIBARGPA 		= argpar
 MYLIBS			= $(NAMELIBMLIBX)
 #LLIBS 			= -L$(LIBDIR) -l$(LOADLIBARGPA) -l$(LOADLIBSS) -l$(LOADLIBPRINTF) -l$(LOADLIBFT) 
 LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX)
+
+ifeq ($(UNAME), Darwin)
+	# mac
+	CC = cc
+else ifeq ($(UNAME), FreeBSD)
+	# FreeBSD
+	CC = cc
+else
+	#Linux and others...
+	CC	= cc
+	LLIBS	+= -L/usr/inlcude/../lib -lXext -lX11 -lm -lbsd
+endif
+
 # ============================================================================ #
 #                                 SOURCES                                      #
 # ============================================================================ #

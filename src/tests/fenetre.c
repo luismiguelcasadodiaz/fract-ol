@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/01 10:33:00 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:15:59 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,12 @@
 //https://03-jon-perez.gitbook.io/coding-library/c/minilibx
 //https://harm-smits.github.io/42docs/libs/minilibx
 
-typedef struct s_img
-{
-	void *img;
-	char *addr;
-	int line_len;
-	int endian;
-	int bpp;
-	int width;
-	int height;
-
-}t_img;
 
 int	main(void)
 {
 	t_data	win1;
 	t_data 	win2;
 	void	*mlx_ptr;
-	t_img *buffer;
 
 	mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)
@@ -73,9 +61,6 @@ int	main(void)
 
 	*/
 	int factorial = 80;
-	buffer.img = mlx_new_image(mlx_ptr, factorial * 16, factorial * 9;
-	buffer.addr = mlx_get_data_addr(buffer, &buffer->bpp, &buffer->line_len, &buffer->endian);
-	mlx_clear
 	mlx_loop_hook(win1.mlx_ptr, &win_h_not_event, &win1);
 	mlx_key_hook(win1.win_ptr, &win_h_key_press, &win1);
 	mlx_loop(win1.mlx_ptr);

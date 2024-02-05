@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fenetre.c                                          :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/03 19:06:06 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:40:02 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 int	main(void)
 {
 	t_data	win1;
-//	t_data 	win2;
+	t_data 	win2;
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
@@ -53,8 +53,8 @@ int	main(void)
 		return (MLX_ERROR);
 	}	
 	win2.mlx_ptr = mlx_ptr;
-	win2_ptr = mlx_new_window(win2.mlx_ptr, 500, 500, "SANDRA");
-	if (win2_ptr == NULL)
+	win2.win_ptr = mlx_new_window(win2.mlx_ptr, 500, 500, "SANDRA");
+	if (win2.win_ptr == NULL)
 		return (MLX_ERROR);
 
 	mlx_loop_hook(win1.mlx_ptr, &win_h_not_event, &win1);
