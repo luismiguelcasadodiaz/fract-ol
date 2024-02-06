@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_key_relea.c                                  :+:      :+:    :+:   */
+/*   win_h_mouse_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/05 19:01:49 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/06 12:39:38 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/06 12:45:07 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 #include <stdio.h>
 
-int	win_h_key_relea(int	keysym, t_win *data)
+int	win_h_mouse_up(int button, int x, int y, t_win *w)
 {
-	if (data->win_ptr == NULL)
-		printf("NULL POINTER");
-	printf("Keypress: %d\n", keysym);
+	printf("in window %s, mouse_up (%d, %d) button %d\n", w->title, x ,y , button);
 	return (0);
 }
+

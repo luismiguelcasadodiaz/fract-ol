@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/05 19:52:19 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:45:55 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@
 
 # define ASPECT_RATIO_3_H 21
 # define ASPECT_RATIO_3_V 9
+
+# define ON_KEYDOWN 2
+# define ON_KEYUP 3
+# define ON_MOUSEDOWN 4
+# define ON_MOUSEUP 5
+# define ON_MOUSEMOVE 6
+# define ON_EXPOSE 12
+# define ON_DESTROY 17
+
+typedef struct s_point
+{
+	int	x;
+	int y;
+}	t_point;
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -44,8 +59,20 @@ typedef struct s_win
 
 }				t_win;
 
-int		win_h_key_press(int keysym, t_win *data);
-int		win_h_key_relea(int keysym, t_win *data);
+int		win_h_key_down(int keysym, t_win *data);
+int		win_h_key_up(int keysym, t_win *data);
+int		win_h_mouse_down(int button, int x , int y, t_win *data);
+int		win_h_mouse_up(int button, int x , int y, t_win *data);
+int		win_h_mouse_move(int x , int y, t_win *data);
 int		win_h_not_event(void *data);
 void	win_pixel_put(t_win w, int x, int y, int color);
+void	draw_square(t_win w, t_point upper_left, t_point lower_right, int color);
+void	draw_square_2(t_win w, t_point upper_left, t_point lower_right);
+
+int		col_create(int transp, int red, int green, int blue);
+int		col_get_t(int color);
+int		col_get_r(int color);
+int		col_get_g(int color);
+int		col_get_b(int color);
+
 #endif

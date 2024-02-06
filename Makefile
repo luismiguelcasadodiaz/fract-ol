@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/05 19:53:36 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/06 12:28:40 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,12 +65,12 @@ vpath %.a $(LIBDIR)
 #                               COMPILER SETUP                                 #
 # ============================================================================ #
 CC 				= cc
-WRNFL			= -Wall -Wextra -Werror
-DBGFL			= -g
-CFLGS			= $(DBGFL) $(WRNFL) -c
+WRNFL			= -Wall -Wextra -Werror -fsanitize=address
+DBGFL			= -g 
+CFLGS			= $(DBGFL) $(WRNFL) -c 
 HEADS			= -I$(INCDIR)
-#LFLGS 			= -Wl,-v
-ifeq ($OPSYS), Darwin)
+LFLGS 			= -fsanitize=address
+ifeq ($(OPSYS), Darwin)
 	FRAMEWORKS		= -framework OpenGL -framework AppKit 
 else
 	FRAMEWORKS		=
@@ -119,10 +119,11 @@ MYLIBS			= $(NAMELIBMLIBX)
 #LLIBS 			= -L$(LIBDIR) -l$(LOADLIBARGPA) -l$(LOADLIBSS) -l$(LOADLIBPRINTF) -l$(LOADLIBFT) 
 LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX)
 
-ifeq ($(UNAME), Darwin)
+ifeq ($(OPSYS), Darwin)
 	# mac
 	CC = cc
-else ifeq ($(UNAME), FreeBSD)
+	LLIBS	+= 
+else ifeq ($(OPSYS), FreeBSD)
 	# FreeBSD
 	CC = cc
 else
@@ -137,10 +138,15 @@ endif
 
 HEADER_FRA	=	fractol.h
 SRCS_FRACT	= 	fractol.c \
-				win_h_key_press.c \
-				win_h_key_relea.c \
+				win_h_key_down.c \
+				win_h_key_up.c \
+				win_h_mouse_down.c \
+				win_h_mouse_up.c \
+				win_h_mouse_move.c \
 				win_h_not_event.c \
-				win_pixel_put.c
+				win_pixel_put.c \
+				draw_square.c \
+				col_create.c
 
 HEADER_BON	=	fractol_bonus.h
 SRCS_BONUS	 =	fractol_bonus.c

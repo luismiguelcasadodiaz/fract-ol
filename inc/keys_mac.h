@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:08:40 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/03 19:05:32 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:45:14 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,12 @@
 # define ARROW_DOWN 125
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
+
+# define MOUSE_BUTTON_LEFT 1
+# define MOUSE_BUTTON_RIGHT 2
+# define MOUSE_BUTTON_MIDDLE 3
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
+
 
 #endif
