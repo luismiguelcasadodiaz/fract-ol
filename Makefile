@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/06 12:28:40 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/07 13:14:33 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ OPSYS := $(shell uname)
 SRCDIR_FRACT		= ./src/fract/
 SRCDIR_BONUS		= ./src/bonus/
 SRCDIR_TESTS		= ./src/tests/
+SRCDIR_PRINT		= ./src/ftpri/
 
 ifeq ($(OPSYS), Darwin)
 	# mac
@@ -103,6 +104,11 @@ endif
 NAMELIBMLIBX 		= libmlx.a
 PATH_MLIBX 		= $(addprefix $(SRCDIR_MLIBX), $(NAMELIBPRINTF))
 LOADLIBMLIBX 		= mlx 
+
+NAMELIBPRINTF 		= libftprintf.a
+PATH_PRINT 		= $(addprefix $(SRCDIR_PRINT), $(NAMELIBPRINTF))
+LOADLIBPRINTF 		= ftprintf
+
 #NAMELIBFT 		= libft.a
 #PATH_LIBFT 		= $(addprefix $(SRCDIR_LIBFT), $(NAMELIBFT))
 #LOADLIBFT 		= ftj
@@ -115,9 +121,9 @@ LOADLIBMLIBX 		= mlx
 kLOADLIBARGPA 		= argpar
 
 #MYLIBS			= $(NAMELIBPRINTF) $(NAMELIBFT) $(NAMELIBPSS) $(NAMELIBARGPA)
-MYLIBS			= $(NAMELIBMLIBX)
+MYLIBS			= $(NAMELIBMLIBX) $(NAMELIBPRINTF)
 #LLIBS 			= -L$(LIBDIR) -l$(LOADLIBARGPA) -l$(LOADLIBSS) -l$(LOADLIBPRINTF) -l$(LOADLIBFT) 
-LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX)
+LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX) -l$(LOADLIBPRINTF)
 
 ifeq ($(OPSYS), Darwin)
 	# mac
@@ -144,6 +150,7 @@ SRCS_FRACT	= 	fractol.c \
 				win_h_mouse_up.c \
 				win_h_mouse_move.c \
 				win_h_not_event.c \
+				win_h_destroy.c \
 				win_pixel_put.c \
 				draw_square.c \
 				col_create.c
@@ -201,11 +208,14 @@ makedirs:
 # .......................... library construction ............................ #
 makelibs: $(MYLIBS) 
 
-$(NAMELIBMLIBX): makelibmlibx $(LIBDIR) 
+$(NAMELIBMLIBX): makelibmlibx $(LIBDIR)$(NAMELIBMLIBX)
+$(NAMELIBPRINTF): makelibftprintf  $(LIBDIR)$(NAMELIBPRINTF)
 
 makelibmlibx: 
 	$(MAKE) -C $(SRCDIR_MLIBX)
 
+makelibftprintf:
+	$(MAKE) -C $(SRCDIR_PRINT)
 
 # ....................... dependencies construction .......................... #
 #for each c file create its dependency file 
@@ -262,14 +272,20 @@ show:
 clean:
 	rm -f $(NAME) $(OBJ)
 	rm -rf $(OBJDIR)
+	$(MAKE) -C $(SRCDIR_MLIBX) clean
+	$(MAKE) -C $(SRCDIR_PRINT) clean
 
 
 fclean: clean
-	rm $(FRACT)
-	rm $(BONUS)
-	rm $(TESTS)
-	rmdir $(OBJDIR)
+	$(MAKE) -C $(SRCDIR_MLIBX) fclean
+	$(MAKE) -C $(SRCDIR_PRINT) fclean
+	rm -f $(FRACT)
+	rm -f $(BONUS)
+	rm -f $(TESTS)
+	rm -rf $(LIBDIR)
 	rmdir $(LIBDIR)
+	rm -rf $(OBJDIR)
+	rmdir $(OBJDIR)
 
 re: fclean all
 

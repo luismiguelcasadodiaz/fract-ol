@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_up.c                                   :+:      :+:    :+:   */
+/*   win_h_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:39:38 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/07 12:40:04 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/07 12:14:23 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/07 12:57:59 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fractol.h"
-#include "ft_printf.h"
+#include "mlx.h"
+#include <stdlib.h>
 
-int	win_h_mouse_up(int button, int x, int y, t_win *w)
+int	win_h_destroy(t_win *w)
 {
-	ft_printf("in window %s, mouse_up (%d, %d) button %d\n", w->title, x ,y , button);
-	w->mu_x = x;
-	w->mu_y = y;
+	mlx_destroy_window(w->mlx_ptr,w->win_ptr);
+	free(w->mlx_ptr);
 	return (0);
 }
-

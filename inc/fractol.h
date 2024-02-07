@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/06 13:45:55 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:26:43 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ typedef struct s_img
 	int		w;
 	int		h;
 }	t_img;
+
+
+/* ************************************************************************** */
+/* w : windows width in pixels                                                */
+/* h : windows height in pixels                                               */
+/* md_x : x coordinate of last mousedown event                                */
+/* md_y : y coordinate of last mousedown event                                */
+/* mu_x : x coordinate of last mouseup event                                  */
+/* mu_y : y coordinate of last mouseup event                                  */
+/* mm_x : x coordinate of last mousemove event                                */
+/* mm_y : y coordinate of last mousemove event                                */
+/*                                                                            */
+/*                                                                            */
+/*                                                                            */
+/* ************************************************************************** */
+
 typedef struct s_win
 {
 	void	*mlx_ptr;
@@ -56,7 +72,12 @@ typedef struct s_win
 	char	*title;
 	int		w;
 	int		h;
-
+	int		md_x;
+	int		md_y;
+	int		mu_x;
+	int		mu_y;
+	int		mm_x;
+	int		mm_y;
 }				t_win;
 
 int		win_h_key_down(int keysym, t_win *data);
@@ -64,7 +85,8 @@ int		win_h_key_up(int keysym, t_win *data);
 int		win_h_mouse_down(int button, int x , int y, t_win *data);
 int		win_h_mouse_up(int button, int x , int y, t_win *data);
 int		win_h_mouse_move(int x , int y, t_win *data);
-int		win_h_not_event(void *data);
+int		win_h_not_event(t_win *data);
+int		win_h_destroy(t_win *data);
 void	win_pixel_put(t_win w, int x, int y, int color);
 void	draw_square(t_win w, t_point upper_left, t_point lower_right, int color);
 void	draw_square_2(t_win w, t_point upper_left, t_point lower_right);
