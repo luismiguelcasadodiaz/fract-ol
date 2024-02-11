@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_complex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:luicasad<luicasad@student.42barcelona.com>  +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 18:09:54 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/09 20:16:54 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/10 11:22:39 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/10 11:23:05 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(void)
 {
-	t_complex a;
-	t_complex b;
-	t_complex c;
+	t_complex	a;
+	t_complex	b;
+	t_complex	c;
 
 	a = create(3, -2);
 	print(a);
@@ -30,6 +30,4 @@ int	main(void)
 	b = create(4, 2);
 	c = divide(a, b);
 	print(c);
-
 }
-	

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_key_press.c                                  :+:      :+:    :+:   */
+/*   win_h_key_down.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/07 13:32:36 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:44:37 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#if defined(__APPLE__) && defined(__MACH__)
+# include "keys_mac.h"
+#else
+# include "keys_ubuntu.h"
+#endif
 #include "fractol.h"
 #include "ft_printf.h"
 #include "mlx.h"
-#if defined(__APPLE__) && defined(__MACH__)
-#include "keys_mac.h"
-#else
-#include "keys_ubuntu.h"
-#endif
 
 int	win_h_key_down(int	keysym, t_win *w)
 {

@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_complex.c                                       :+:      :+:    :+:   */
+/*   add_subs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 11:13:38 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/10 16:48:16 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/10 11:18:09 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/10 11:18:18 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_complex.h"
-#include <stdio.h>
 
-t_complex	create(float x, float y)
+t_complex	add(t_complex a, t_complex b)
 {
-	t_complex	r;
+	t_complex	c;
 
-	r.x = x;
-	r.y = y;
-	r.mod2 = x * x + y * y;
-	return (r);
+	c.x = a.x + b.x;
+	c.y = a.y + b.y;
+	c.mod2 = c.x * c.x + c.y * c.y;
+	return (c);
 }
 
-short	equal(t_complex a, t_complex b)
+t_complex	substract(t_complex a, t_complex b)
 {
-	return (a.x == b.x && a.y == b.y);
-}
+	t_complex	c;
 
-short	is_a_smaller_than_b(t_complex a, t_complex b)
-{
-	return (a.mod2 < b.mod2);
-}
-
-void	print(t_complex a)
-{
-	if (a.y > 0)
-		printf("%f + %f i\n", a.x, a.y);
-	else
-		printf("%f  %f i\n", a.x, a.y);
+	c.x = a.x + b.x;
+	c.y = a.y + b.y;
+	c.mod2 = c.x * c.x + c.y * c.y;
+	return (c);
 }

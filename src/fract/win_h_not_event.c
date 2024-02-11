@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:23:56 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/07 13:26:35 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:36:23 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	win_h_not_event(t_win *w)
 	if (w == NULL)
 		return (-1);
 	ft_printf("not event in windows %s\n", w->title);
-
 	ul.x = w->md_x;
 	ul.y = w->md_y;
 	lr.x = w->mu_x;

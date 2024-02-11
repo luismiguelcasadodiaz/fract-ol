@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/07 13:26:43 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/10 09:55:34 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ON_MOUSEMOVE 6
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
+# include "ft_complex.h"
 
 typedef struct s_point
 {
@@ -97,4 +98,6 @@ int		col_get_r(int color);
 int		col_get_g(int color);
 int		col_get_b(int color);
 
+int		is_mandelbrot(t_complex c);
+int		is_julia(t_complex z, t_complex c);
 #endif

@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/07 13:14:33 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/10 09:54:05 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCDIR_FRACT		= ./src/fract/
 SRCDIR_BONUS		= ./src/bonus/
 SRCDIR_TESTS		= ./src/tests/
 SRCDIR_PRINT		= ./src/ftpri/
+SRCDIR_FTCOMPLEX	= ./src/compl/
 
 ifeq ($(OPSYS), Darwin)
 	# mac
@@ -67,7 +68,7 @@ vpath %.a $(LIBDIR)
 # ============================================================================ #
 CC 				= cc
 WRNFL			= -Wall -Wextra -Werror -fsanitize=address
-DBGFL			= -g 
+DBGFL			= -g3 
 CFLGS			= $(DBGFL) $(WRNFL) -c 
 HEADS			= -I$(INCDIR)
 LFLGS 			= -fsanitize=address
@@ -102,12 +103,16 @@ endif
 #                              LIBRARIES SETUP                                 #
 # ============================================================================ #
 NAMELIBMLIBX 		= libmlx.a
-PATH_MLIBX 		= $(addprefix $(SRCDIR_MLIBX), $(NAMELIBPRINTF))
+PATH_MLIBX 			= $(addprefix $(SRCDIR_MLIBX), $(NAMELIBPRINTF))
 LOADLIBMLIBX 		= mlx 
 
 NAMELIBPRINTF 		= libftprintf.a
-PATH_PRINT 		= $(addprefix $(SRCDIR_PRINT), $(NAMELIBPRINTF))
+PATH_PRINT 			= $(addprefix $(SRCDIR_PRINT), $(NAMELIBPRINTF))
 LOADLIBPRINTF 		= ftprintf
+
+NAMELIBFTCOMPLEX 	= libftcomplex.a
+PATH_FTCOMPLEX 		= $(addprefix $(SRCDIR_FTCOMPLEX), $(NAMELIBFTCOMPLEX))
+LOADLIBFTCOMPLEX 	= ftcomplex
 
 #NAMELIBFT 		= libft.a
 #PATH_LIBFT 		= $(addprefix $(SRCDIR_LIBFT), $(NAMELIBFT))
@@ -121,9 +126,9 @@ LOADLIBPRINTF 		= ftprintf
 kLOADLIBARGPA 		= argpar
 
 #MYLIBS			= $(NAMELIBPRINTF) $(NAMELIBFT) $(NAMELIBPSS) $(NAMELIBARGPA)
-MYLIBS			= $(NAMELIBMLIBX) $(NAMELIBPRINTF)
+MYLIBS			= $(NAMELIBMLIBX) $(NAMELIBPRINTF) $(NAMELIBFTCOMPLEX) 
 #LLIBS 			= -L$(LIBDIR) -l$(LOADLIBARGPA) -l$(LOADLIBSS) -l$(LOADLIBPRINTF) -l$(LOADLIBFT) 
-LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX) -l$(LOADLIBPRINTF)
+LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX) -l$(LOADLIBPRINTF) -l$(LOADLIBFTCOMPLEX)
 
 ifeq ($(OPSYS), Darwin)
 	# mac
@@ -153,7 +158,9 @@ SRCS_FRACT	= 	fractol.c \
 				win_h_destroy.c \
 				win_pixel_put.c \
 				draw_square.c \
-				col_create.c
+				col_create.c \
+				is_julia.c \
+				is_mandelbrot.c
 
 HEADER_BON	=	fractol_bonus.h
 SRCS_BONUS	 =	fractol_bonus.c
@@ -210,6 +217,7 @@ makelibs: $(MYLIBS)
 
 $(NAMELIBMLIBX): makelibmlibx $(LIBDIR)$(NAMELIBMLIBX)
 $(NAMELIBPRINTF): makelibftprintf  $(LIBDIR)$(NAMELIBPRINTF)
+$(NAMELIBFTCOMPLEX): makelibftcomplex  $(LIBDIR)$(NAMELIBFTCOMPLEX)
 
 makelibmlibx: 
 	$(MAKE) -C $(SRCDIR_MLIBX)
@@ -217,6 +225,8 @@ makelibmlibx:
 makelibftprintf:
 	$(MAKE) -C $(SRCDIR_PRINT)
 
+makelibftcomplex:
+	$(MAKE) -C $(SRCDIR_FTCOMPLEX)
 # ....................... dependencies construction .......................... #
 #for each c file create its dependency file 
 #READ GNU make  manual 4.14 Generating Prerequisites Automatically.
@@ -292,6 +302,8 @@ re: fclean all
 
 norma:
 	$(MAKE) -C $(SRCDIR_MLIBX)  norma
+	$(MAKE) -C $(SRCDIR_FTPRINTF)  norma
+	$(MAKE) -C $(SRCDIR_FTCOMPLEX)  norma
 	@echo "$(GREEN)============ CHECKING NORME $(FRACT) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_FRACT) 
 	@echo "$(ORANGE)========== CHECKING NORME $(BONUS) ==============$(DEF_COLOR)"

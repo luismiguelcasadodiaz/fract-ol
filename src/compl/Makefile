@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 18:08:17 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/09 18:06:33 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/10 11:21:40 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 MAKEFLAGS += rR
@@ -45,7 +45,7 @@ vpath %.a $(LIBDIR)
 #                               COMPILER SETUP                                 #
 # ============================================================================ #
 CC 			= 	cc
-CFLAGS 		= 	-g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS 		= 	-g3 -Wall -Wextra -Werror -fsanitize=address
 HEADS		=	-I$(INCDIR)
 LFLGS		=	-fsanitize=address
 # From 4.4.3 The Function wildcard gnu make manual....
@@ -58,7 +58,9 @@ LFLGS		=	-fsanitize=address
 # So I must explicitly enumerate files for the project.
 
 HEADER		=	ft_complex.h
-SRCS 		= 	ft_complex.c
+SRCS 		= 	ft_complex.c \
+				add_subs.c \
+				mult_div.c
 
 # Generate a list of object files by replacing .c with .o
 
