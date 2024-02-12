@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:23:56 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/10 16:36:23 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:46:01 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	win_h_not_event(t_win *w)
 	ul.y = w->md_y;
 	lr.x = w->mu_x;
 	lr.y = w->mu_y;
-	draw_square_2(*w, ul, lr);
-	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->img.img_ptr, 0, 0);
+	///draw_square_2(*w, ul, lr);
+	//if (w->mlx_ptr && w->win_ptr)
+	//	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->img.img_ptr, 0, 0);
 	return (0);
 }

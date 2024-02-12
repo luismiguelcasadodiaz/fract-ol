@@ -6,23 +6,27 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/10 09:55:34 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:33:58 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # define MLX_ERROR 1
-# define XK_ESCAPE 65
+# define MAX_ITERATIONS 65
 # define ASPECT_RATIO_1_H 4
 # define ASPECT_RATIO_1_V 3
 
 # define ASPECT_RATIO_2_H 16
 # define ASPECT_RATIO_2_V 9
 
-
 # define ASPECT_RATIO_3_H 21
 # define ASPECT_RATIO_3_V 9
+
+# define BLACK 0x00000000
+# define RED   0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE  0x000000FF
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
@@ -32,6 +36,7 @@
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
 # include "ft_complex.h"
+
 
 typedef struct s_point
 {
@@ -80,7 +85,7 @@ typedef struct s_win
 	int		mm_x;
 	int		mm_y;
 }				t_win;
-
+t_win	*win_init(char *title, int wide, int height);
 int		win_h_key_down(int keysym, t_win *data);
 int		win_h_key_up(int keysym, t_win *data);
 int		win_h_mouse_down(int button, int x , int y, t_win *data);
@@ -89,7 +94,7 @@ int		win_h_mouse_move(int x , int y, t_win *data);
 int		win_h_not_event(t_win *data);
 int		win_h_destroy(t_win *data);
 void	win_pixel_put(t_win w, int x, int y, int color);
-void	draw_square(t_win w, t_point upper_left, t_point lower_right, int color);
+void	draw_fractal(t_win w);
 void	draw_square_2(t_win w, t_point upper_left, t_point lower_right);
 
 int		col_create(int transp, int red, int green, int blue);
@@ -98,6 +103,6 @@ int		col_get_r(int color);
 int		col_get_g(int color);
 int		col_get_b(int color);
 
-int		is_mandelbrot(t_complex c);
+int		is_mande(t_complex c);
 int		is_julia(t_complex z, t_complex c);
 #endif

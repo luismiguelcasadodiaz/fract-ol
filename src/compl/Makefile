@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 18:08:17 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/10 11:21:40 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/12 13:05:07 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 MAKEFLAGS += rR
@@ -45,9 +45,11 @@ vpath %.a $(LIBDIR)
 #                               COMPILER SETUP                                 #
 # ============================================================================ #
 CC 			= 	cc
-CFLAGS 		= 	-g3 -Wall -Wextra -Werror -fsanitize=address
+CFLAGS 		= 	-g3 -Wall -Wextra -Werror
+#CFLAGS 		= 	-g3 -Wall -Wextra -Werror -fsanitize=address
 HEADS		=	-I$(INCDIR)
-LFLGS		=	-fsanitize=address
+LFLGS		=
+#LFLGS		=	-fsanitize=address
 # From 4.4.3 The Function wildcard gnu make manual....
 # Althought wildcard exparnds automaticaly in rules
 # I use the wildcard function to expand wildcards in variables. 

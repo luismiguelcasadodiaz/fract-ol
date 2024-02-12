@@ -6,7 +6,7 @@
 /*   By:luicasad<luicasad@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 10:05:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/10 11:32:13 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/12 08:16:14 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ t_complex	divide(t_complex a, t_complex b);
 void		print(t_complex a);
 
 # endif
-# define KEY_U 117
-# define KEY_V 118

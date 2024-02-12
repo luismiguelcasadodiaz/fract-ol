@@ -1,55 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_julia.c                                         :+:      :+:    :+:   */
+/*   is_mande.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 11:30:59 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/12 13:43:11 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_complex.h"
 #include "fractol.h"
+#include "ft_printf.h"
 
 /******************************************************************************/
 /**
-   @file is_julia.c
-   @brief is_julia() Calculates if z belongs to the orbit of c.
+   @file is_mande.c
+   @brief is_mande() Calculates if z belongs to the orbit of c.
 
    @param[in]  z: a complex number to determine if belongs or not ot the orbit
    of the c complex number.
-   @param[in]  c: a complex number to determine if z belongs to c's orbit.
 
    @details
-   Loops MAX_ITERATIONS times calculating Zn = (Zn-1)2 + C while the real and
-   the imaginary part of Zn are smaller than 2.
+   Loops the 9 times calculating Zn = (Zn-1)2 + C.
+   Verifies if it is a growing secuence.
 
-   if either the real or the imaginary part 'Escape' the boundaries (<= 2) then
-   z does not belong to the julia set and deserves a color.
-   if loop exhausts the iterations then z belongs to the Julia set and gets the
-   black color.
+   if it is not a growing secuence returns zero, (black color).
+   if it is a growing secuence returns a color. A color made of the bigger
+   number of the secuence module 255 * 255 * 255 (RGB NUM COLORS)
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
-int	is_julia(t_complex z, t_complex c)
+int	is_mande(t_complex c)
 {
 	t_complex	z0;
 	t_complex	zn;
 	short		n;
 
-	z0 = z;
+	z0 = create(0, 0);
 	n = 0;
+	ft_printf("%d  %d", c.x, c.y);
 	while ((z0.x <= 2) && (z0.y <= 2) && (n <= MAX_ITERATIONS))
 	{
 		zn = add(multiply(z0, z0), c);
 		z0 = zn;
-		print(zn);
 		n++;
 	}
 	if (n <= MAX_ITERATIONS)
-		return (GREEN);
+		return (n * GREEN);
 	else
 		return (BLACK);
 }
