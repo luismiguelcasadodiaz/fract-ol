@@ -6,12 +6,12 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 13:43:11 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:31:15 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
 #include "fractol.h"
-#include "ft_printf.h"
+#include <stdio.h>
 
 /******************************************************************************/
 /**
@@ -39,15 +39,15 @@ int	is_mande(t_complex c)
 
 	z0 = create(0, 0);
 	n = 0;
-	ft_printf("%d  %d", c.x, c.y);
 	while ((z0.x <= 2) && (z0.y <= 2) && (n <= MAX_ITERATIONS))
 	{
 		zn = add(multiply(z0, z0), c);
 		z0 = zn;
 		n++;
 	}
+//	printf("%d\n ", n);
 	if (n <= MAX_ITERATIONS)
-		return (n * GREEN);
+		return (n * BLUE);
 	else
 		return (BLACK);
 }

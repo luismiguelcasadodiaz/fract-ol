@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 13:32:19 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:00:23 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,17 @@
 
 int	main(void)
 {
-	t_win	*w;
-	t_point	ul;
-	t_point	lr;
+	t_win	w;
 
-	w = win_init("Luis", 500, 500);
-	if (!w)
-		return (MLX_ERROR);
-	ul.x = 20;
-	ul.y = 20;
-	lr.x = 50;
-	lr.y = 70;
-	win_pixel_put(*w, 20, 20, 0x0000FF00);
-	draw_fractal(*w);
-	mlx_put_image_to_window(w->mlx_ptr, w->win_ptr, w->img.img_ptr, 0, 0);
-	mlx_loop_hook(w->mlx_ptr, &win_h_not_event, w);
-	mlx_hook(w->win_ptr, ON_KEYDOWN, 0, &win_h_key_down, w);
-	mlx_hook(w->win_ptr, ON_KEYUP, 0, &win_h_key_up, w);
-	mlx_hook(w->win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, w);
-	mlx_hook(w->win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, w);
-	mlx_hook(w->win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, w);
-	mlx_hook(w->win_ptr, ON_DESTROY, 0, &win_h_destroy, w);
-	mlx_loop(w->mlx_ptr);
+	w = win_init_2("Mandelbrot", 600, 400);
+	draw_fractal(w);
+	mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
+	mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
+	mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, &w);
+	mlx_hook(w.win_ptr, ON_DESTROY, 0, &win_h_destroy, &w);
+	mlx_loop(w.mlx_ptr);
 	return (0);
 }

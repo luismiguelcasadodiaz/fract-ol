@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 13:33:58 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:19:58 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ typedef struct s_win
 	int		mu_y;
 	int		mm_x;
 	int		mm_y;
+	int		zoom;
 }				t_win;
 t_win	*win_init(char *title, int wide, int height);
+t_win	win_init_2(char *title, int wide, int height);
 int		win_h_key_down(int keysym, t_win *data);
 int		win_h_key_up(int keysym, t_win *data);
 int		win_h_mouse_down(int button, int x , int y, t_win *data);

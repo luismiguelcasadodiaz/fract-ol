@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:54:06 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 13:38:15 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:54:59 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	win_pixel_put(t_win w, int x, int y, int color)
 	int		offset_y;
 	int		offset_x;
 
-	ft_printf(" %d %d ", x, y);
+//	ft_printf(" %d %d ", x, y);
 	offset_y = y * w.img.line_length;
 	offset_x = x * (w.img.bits_per_pixel / 8);
 	dst = w.img.addr + offset_y + offset_x;

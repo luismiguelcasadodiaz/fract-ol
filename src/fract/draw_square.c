@@ -6,32 +6,37 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 13:43:14 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:18:59 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "mlx.h"
 
 void	draw_fractal(t_win w1)
 {
-	int	x;
-	int	y;
-	int cx;
-	int cy;
+	float	x;
+	float	y;
+	float cx;
+	float cy;
+	int	color;
 
-	cx = (w1.w / 2);
-	cy = (w1.h / 2);
-	y = 0;
-	while (y <= w1.h)
+	cx = 2.0 * (w1.w / 3.0);
+	cy = (w1.h / 2.0);
+	y = 0.0;
+	while (y <= w1.h/2)
 	{
-		x = 0;
+		x = 0.0;
 		while (x <= w1.w)
 		{
-		win_pixel_put(w1, x, y, is_mande(create((x - cx) / cx, (y - cy) / cy))); 
-		x++;
+			color = is_mande(create((x - cx) / (w1.w / 3.0), -(y - cy) / (w1.h / 3.0)));
+			win_pixel_put(w1, x, y, color); 
+			win_pixel_put(w1, x, (w1.h - y) , color); 
+			x++;
 		}
 		y++;
 	}
+	mlx_put_image_to_window(w1.mlx_ptr, w1.win_ptr, w1.img.img_ptr, 0, 0);
 }
 
 void	draw_square_2(t_win w1, t_point ul, t_point lr)

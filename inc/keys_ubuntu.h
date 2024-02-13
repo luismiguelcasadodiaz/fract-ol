@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:10:00 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/03 18:10:33 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:04:40 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@
 # define KEY_CTRL_RIGHT 65508
 # define KEY_SHIFT_LEFT 65505
 # define KEY_SHIFT_RIGHT 65506
+# define MOUSE_SCROLL_DOWN 4
 #endif
