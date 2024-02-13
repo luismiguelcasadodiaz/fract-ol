@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 12:31:15 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:48:19 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
@@ -47,7 +47,7 @@ int	is_mande(t_complex c)
 	}
 //	printf("%d\n ", n);
 	if (n <= MAX_ITERATIONS)
-		return (n * BLUE);
+		return (n * 255098);
 	else
 		return (BLACK);
 }

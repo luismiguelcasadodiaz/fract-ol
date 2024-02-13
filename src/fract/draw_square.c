@@ -6,13 +6,37 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 13:18:59 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:34:01 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "mlx.h"
 
+/* ************************************************************************** */
+/*          a           b                                                     */
+/*  |..............x..........|                                               */
+/*  O                         W                                               */
+/*                                                                            */
+/*  OW/(OW-Ox) = rb         600/(600-400) = 3                                 */
+/*  OW/Ox      = ra         600/400       = 1,5                               */
+/*  rb/ra      = r          3/1,5         = 2                                 */
+/*  x = r * (OW / rb)       2 * (600 / 3) = 400                               */
+/*                                                                            */
+/* ************************************************************************** */
+static int	calculate_center(int ow, int x)
+{
+	float	r;
+	float	ra;
+	float	rb;
+	float	fx;
+
+	fx = 1.0 * x;
+	rb = ow / (ow - fx);
+	ra = ow / fx;
+	r = rb / ra;
+	return ((int)r * ow / rb);
+}
 void	draw_fractal(t_win w1)
 {
 	float	x;
@@ -21,17 +45,19 @@ void	draw_fractal(t_win w1)
 	float cy;
 	int	color;
 
-	cx = 2.0 * (w1.w / 3.0);
-	cy = (w1.h / 2.0);
+	cx = calculate_center(w1.w, w1.md_x);
+	cy = calculate_center(w1.h, w1.md_y);
+	//cx = 2.0 * (w1.w / 3.0);
+	//cy = (w1.h / 2.0);
 	y = 0.0;
-	while (y <= w1.h/2)
+	while (y <= w1.h)
 	{
 		x = 0.0;
 		while (x <= w1.w)
 		{
 			color = is_mande(create((x - cx) / (w1.w / 3.0), -(y - cy) / (w1.h / 3.0)));
 			win_pixel_put(w1, x, y, color); 
-			win_pixel_put(w1, x, (w1.h - y) , color); 
+			//win_pixel_put(w1, x, (w1.h - y) , color); 
 			x++;
 		}
 		y++;

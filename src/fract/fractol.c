@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 13:00:23 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:55:58 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(void)
 	t_win	w;
 
 	w = win_init_2("Mandelbrot", 600, 400);
-	draw_fractal(w);
+//	draw_fractal(w);
 	mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
 	mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
 	mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
