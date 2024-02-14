@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 13:10:22 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:56:21 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
@@ -31,13 +31,11 @@
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
-int	is_mande(t_complex c, int palette)
+int	is_mande(t_complex c, t_complex z0, int palette)
 {
-	t_complex	z0;
 	t_complex	zn;
 	short		n;
 
-	z0 = create(0, 0);
 	n = 0;
 	while ((z0.x <= 2) && (z0.y <= 2) && (n <= MAX_ITERATIONS))
 	{

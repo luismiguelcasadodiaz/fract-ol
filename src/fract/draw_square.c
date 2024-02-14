@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 13:15:31 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:57:56 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	calculate_center(int ow, int x, float *rb)
 {
 	float	r;
 	float	ra;
-	;
 	float	fx;
 
 	fx = 1.0 * x;
@@ -73,7 +72,7 @@ void	draw_fractal(t_win w1)
 	cx = calculate_center(w1.w, w1.md_x, &rbx);
 	cy = calculate_center(w1.h, w1.md_y, &rby);
 	z = create(w1.md_x / w1.w, w1.md_y / w1.h);
-	//z = create(0, 0);
+	z = create(0, 0);
 	//cx = 2.0 * (w1.w / 3.0);
 	//cy = (w1.h / 2.0);
 	y = 0.0;
@@ -83,7 +82,7 @@ void	draw_fractal(t_win w1)
 		while (x <= w1.w)
 		{
 		    c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
-			color = is_mande(c, w1.palette);
+			color = is_mande(z, c, w1.palette);
 			//color = is_julia(z, c, w1.palette);
 			win_pixel_put(w1, x, y, color); 
 			//win_pixel_put(w1, x, (w1.h - y) , color); 

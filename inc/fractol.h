@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 12:40:25 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:56:59 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		col_get_r(int color);
 int		col_get_g(int color);
 int		col_get_b(int color);
 
-int		is_mande(t_complex c, int palette);
+int		is_mande(t_complex z, t_complex c, int palette);
 int		is_julia(t_complex z, t_complex c, int palette);
 void	show_usage();
 #endif
