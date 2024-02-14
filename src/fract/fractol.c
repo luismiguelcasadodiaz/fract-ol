@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 14:55:58 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:16:31 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,24 @@
 //https://03-jon-perez.gitbook.io/coding-library/c/minilibx
 //https://harm-smits.github.io/42docs/libs/minilibx
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_win	w;
 
-	w = win_init_2("Mandelbrot", 600, 400);
-//	draw_fractal(w);
-	mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
-	mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
-	mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
-	mlx_hook(w.win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, &w);
-	mlx_hook(w.win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, &w);
-	mlx_hook(w.win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, &w);
-	mlx_hook(w.win_ptr, ON_DESTROY, 0, &win_h_destroy, &w);
-	mlx_loop(w.mlx_ptr);
+	if ((argc != 2) && (argc !=4))
+		show_usage();
+	else
+	{
+		w = win_init_2(argv[1], 600, 600);
+		mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
+		mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
+		mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
+		mlx_hook(w.win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, &w);
+		mlx_hook(w.win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, &w);
+		mlx_hook(w.win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, &w);
+		mlx_hook(w.win_ptr, ON_EXPOSE, 0, &win_h_expose, &w);
+		mlx_hook(w.win_ptr, ON_DESTROY, 0, &win_h_destroy, &w);
+		mlx_loop(w.mlx_ptr);
+	}
 	return (0);
 }

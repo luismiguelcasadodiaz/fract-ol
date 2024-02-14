@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_destroy.c                                    :+:      :+:    :+:   */
+/*   win_h_expose.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 12:14:23 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 11:34:49 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/14 11:42:08 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/14 11:43:26 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-int	win_h_destroy(t_win *w)
+int	win_h_expose(t_win *w)
 {
-	mlx_destroy_window(w->mlx_ptr, w->win_ptr);
-	free(w->mlx_ptr);
-	exit (0);
+	draw_fractal(*w);
+	return (0);
 }

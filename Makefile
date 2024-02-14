@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/13 12:47:35 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/14 12:18:47 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,7 @@ endif
 
 HEADER_FRA	=	fractol.h
 SRCS_FRACT	= 	fractol.c \
+				show_usage.c \
 				win_init.c \
 				win_h_key_down.c \
 				win_h_key_up.c \
@@ -159,6 +160,7 @@ SRCS_FRACT	= 	fractol.c \
 				win_h_mouse_move.c \
 				win_h_not_event.c \
 				win_h_destroy.c \
+				win_h_expose.c \
 				win_pixel_put.c \
 				draw_square.c \
 				col_create.c \

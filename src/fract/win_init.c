@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:49:57 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 15:52:29 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:25:07 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	set_init_values(t_win *w, char *title, int wide, int height)
 	w->mm_y = 0;
 	w->img.w = w->w;
 	w->img.h = w->h;
-	w->zoom = 0;
+	w->zoom = INITIAL_ZOOM;
 }
 /*
 static void	set_init_values_2(t_win w, char *title, int wide, int height)

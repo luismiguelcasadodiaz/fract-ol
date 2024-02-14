@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_destroy.c                                    :+:      :+:    :+:   */
+/*   show_usage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 12:14:23 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 11:34:49 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/14 12:19:38 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/14 12:26:23 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "mlx.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
-int	win_h_destroy(t_win *w)
+void	show_usage()
 {
-	mlx_destroy_window(w->mlx_ptr, w->win_ptr);
-	free(w->mlx_ptr);
-	exit (0);
+	ft_printf("USAGE:./fractol <name> <real part> <imaginary part>\n");
+	ft_printf("WHERE:<name> Mandelbrot or Julia.\n");
+	ft_printf("NOTE: Mandelbrot does not consider other arguments.\n");
+	return ;
 }

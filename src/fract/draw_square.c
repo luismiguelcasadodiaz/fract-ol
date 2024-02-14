@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 15:34:01 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:15:31 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,56 @@
 /*  x = r * (OW / rb)       2 * (600 / 3) = 400                               */
 /*                                                                            */
 /* ************************************************************************** */
-static int	calculate_center(int ow, int x)
+static int	calculate_center(int ow, int x, float *rb)
 {
 	float	r;
 	float	ra;
-	float	rb;
+	;
 	float	fx;
 
 	fx = 1.0 * x;
-	rb = ow / (ow - fx);
+	*rb = ow / (ow - fx);
 	ra = ow / fx;
-	r = rb / ra;
-	return ((int)r * ow / rb);
+	r = *rb / ra;
+	return ((int)r * ow / *rb);
 }
+/*
+static int	get_color(int fractal, float x, float y, float cx, float cy)
+{
+	t_complex	z;
+	t_complex	c;
+
+	if (fractal == 1)
+	{
+		c = create((x - cx) / (w1.w / 3.0), -(y - cy) / (w1.h / 3.0));
+		color = is_mande(c);
+	}
+	else if (fractal == 2)
+	{
+		color = is_julia(create((x - cx) / (w1.w / 3.0), -(y - cy) / (w1.h / 3.0)));
+	}
+	else
+		color = BLACK;
+	return (color);
+}
+*/
+
 void	draw_fractal(t_win w1)
 {
 	float	x;
 	float	y;
+	float	rbx;
+	float	rby;
 	float cx;
 	float cy;
-	int	color;
+	float color;
+	t_complex	z;
+	t_complex	c;
 
-	cx = calculate_center(w1.w, w1.md_x);
-	cy = calculate_center(w1.h, w1.md_y);
+	cx = calculate_center(w1.w, w1.md_x, &rbx);
+	cy = calculate_center(w1.h, w1.md_y, &rby);
+	z = create(w1.md_x / w1.w, w1.md_y / w1.h);
+	//z = create(0, 0);
 	//cx = 2.0 * (w1.w / 3.0);
 	//cy = (w1.h / 2.0);
 	y = 0.0;
@@ -55,7 +82,9 @@ void	draw_fractal(t_win w1)
 		x = 0.0;
 		while (x <= w1.w)
 		{
-			color = is_mande(create((x - cx) / (w1.w / 3.0), -(y - cy) / (w1.h / 3.0)));
+		    c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
+			color = is_mande(c, w1.palette);
+			//color = is_julia(z, c, w1.palette);
 			win_pixel_put(w1, x, y, color); 
 			//win_pixel_put(w1, x, (w1.h - y) , color); 
 			x++;
