@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 13:16:31 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:58:42 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,22 @@ int	main(int argc, char **argv)
 	t_win	w;
 
 	if ((argc != 2) && (argc !=4))
-		show_usage();
-	else
 	{
-		w = win_init_2(argv[1], 600, 600);
-		mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
-		mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
-		mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
-		mlx_hook(w.win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, &w);
-		mlx_hook(w.win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, &w);
-		mlx_hook(w.win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, &w);
-		mlx_hook(w.win_ptr, ON_EXPOSE, 0, &win_h_expose, &w);
-		mlx_hook(w.win_ptr, ON_DESTROY, 0, &win_h_destroy, &w);
-		mlx_loop(w.mlx_ptr);
+		show_usage();
+		return (0);
 	}
+	else if (argc ==2)
+		w = win_init(argv[1], "0", "0");
+	else
+		w = win_init(argv[1], argv[2], argv[3]);
+	mlx_loop_hook(w.mlx_ptr, &win_h_not_event, &w);
+	mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
+	mlx_hook(w.win_ptr, ON_KEYUP, 0, &win_h_key_up, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEDOWN, 0, &win_h_mouse_down, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEUP, 0, &win_h_mouse_up, &w);
+	mlx_hook(w.win_ptr, ON_MOUSEMOVE, 0, &win_h_mouse_move, &w);
+	mlx_hook(w.win_ptr, ON_EXPOSE, 0, &win_h_expose, &w);
+	mlx_hook(w.win_ptr, ON_DESTROY, 0, &win_h_destroy, &w);
+	mlx_loop(w.mlx_ptr);
 	return (0);
 }

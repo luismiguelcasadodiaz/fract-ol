@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 17:56:59 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:17:42 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define MLX_ERROR 1
 # define INITIAL_ZOOM 1
 # define MAX_ITERATIONS 255
+# define WINDOW_W 600
+# define WINDOW_H 400
 # define ASPECT_RATIO_1_H 4
 # define ASPECT_RATIO_1_V 3
 
@@ -54,6 +56,8 @@ typedef struct s_img
 	int		endian;
 	int		w;
 	int		h;
+	float	real;
+	float	imag;
 }	t_img;
 
 
@@ -66,30 +70,31 @@ typedef struct s_img
 /* mu_y : y coordinate of last mouseup event                                  */
 /* mm_x : x coordinate of last mousemove event                                */
 /* mm_y : y coordinate of last mousemove event                                */
-/*                                                                            */
-/*                                                                            */
+/* zoom : zoom level [1..MAX_ITERATIONS]                                      */
+/* palete : RGB integer to multiply by number of iterations.                  */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef struct s_win
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-	char	*title;
-	int		w;
-	int		h;
-	int		md_x;
-	int		md_y;
-	int		mu_x;
-	int		mu_y;
-	int		mm_x;
-	int		mm_y;
-	int		zoom;
-	int		palette;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
+	char		*title;
+	int			w;
+	int			h;
+	int			md_x;
+	int			md_y;
+	int			mu_x;
+	int			mu_y;
+	int			mm_x;
+	int			mm_y;
+	int			zoom;
+	int			palette;
+	t_complex	z;
 }				t_win;
-t_win	*win_init(char *title, int wide, int height);
-t_win	win_init_2(char *title, int wide, int height);
+t_win	win_init(char *title, char *real_txt, char *imag_txt);
+//t_win	win_init_2(char *title, int wide, int height);
 int		win_h_key_down(int keysym, t_win *data);
 int		win_h_key_up(int keysym, t_win *data);
 int		win_h_mouse_down(int button, int x , int y, t_win *data);

@@ -6,46 +6,36 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:49:57 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 10:25:07 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:19:11 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "ft_complex.h"
 #include "mlx.h"
 #include <stdlib.h>
 #include "ft_printf.h"
+#include "libft.h"
 
-static void	set_init_values(t_win *w, char *title, int wide, int height)
+static void	set_init_values(t_win *w, char *title, int real, int imag)
 {
 	w->title = title;
-	w->w = wide;
-	w->h = height;
+	w->w = WINDOW_W;
+	w->h = WINDOW_H;
 	w->md_x = 0;
 	w->md_y = 0;
 	w->mu_x = 0;
 	w->mu_y = 0;
 	w->mm_x = 0;
 	w->mm_y = 0;
+	w->z = create(1.0 * real / WINDOW_W, 1.0 * imag / WINDOW_H);
 	w->img.w = w->w;
 	w->img.h = w->h;
+	w->img.real = COMPLEX_REAL_MAX;
+	w->img.imag = COMPLEX_IMAG_MAX;
 	w->zoom = INITIAL_ZOOM;
 }
 /*
-static void	set_init_values_2(t_win w, char *title, int wide, int height)
-{
-	w.title = title;
-	w.w = wide;
-	w.h = height;
-	w.md_x = 0;
-	w.md_y = 0;
-	w.mu_x = 0;
-	w.mu_y = 0;
-	w.mm_x = 0;
-	w.mm_y = 0;
-	w.img.w = w.w;
-	w.img.h = w.h;
-}
-*/
 t_win	*win_init(char *title, int wide, int height)
 {
 	t_win	*w;
@@ -87,13 +77,13 @@ t_win	*win_init(char *title, int wide, int height)
 		w->img.addr);
 	return (w);
 }
-
-t_win	win_init_2(char *title, int wide, int height)
+*/
+t_win	win_init(char *title, char *real_txt, char *imag_txt)
 {
 	t_win	w;
 
 	w.title = title;
-	set_init_values(&w, title, wide, height);
+	set_init_values(&w, title, ft_atoi(real_txt), ft_atoi(imag_txt));
 	w.mlx_ptr = mlx_init();
 	if (w.mlx_ptr == NULL)
 		exit (-1);

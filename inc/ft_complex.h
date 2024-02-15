@@ -6,13 +6,14 @@
 /*   By:luicasad<luicasad@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 10:05:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 08:16:14 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:52:39 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_COMPLEX_H
 # define FT_COMPLEX_H
-
+# define COMPLEX_REAL_MAX 2.0
+# define COMPLEX_IMAG_MAX 1.0
 /* ************************************************************************** */
 /* x: holds the real part of a complex number.                                */
 /* y: holds the imaginary part of a complex number.                           */

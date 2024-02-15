@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/14 12:18:47 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/15 12:07:07 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCDIR_FRACT		= ./src/fract/
 SRCDIR_BONUS		= ./src/bonus/
 SRCDIR_TESTS		= ./src/tests/
 SRCDIR_PRINT		= ./src/ftpri/
+SRCDIR_LIBFT		= ./src/libft/
 SRCDIR_FTCOMPLEX	= ./src/compl/
 
 ifeq ($(OPSYS), Darwin)
@@ -116,9 +117,10 @@ NAMELIBFTCOMPLEX 	= libftcomplex.a
 PATH_FTCOMPLEX 		= $(addprefix $(SRCDIR_FTCOMPLEX), $(NAMELIBFTCOMPLEX))
 LOADLIBFTCOMPLEX 	= ftcomplex
 
-#NAMELIBFT 		= libft.a
-#PATH_LIBFT 		= $(addprefix $(SRCDIR_LIBFT), $(NAMELIBFT))
-#LOADLIBFT 		= ftj
+NAMELIBFT 			= libft.a
+PATH_LIBFT 			= $(addprefix $(SRCDIR_LIBFT), $(NAMELIBFT))
+LOADLIBFT 			= ft
+
 #NAMELIBPSS 		= libpss.a
 #PATH_STACK 		= $(addprefix $(SRCDIR_STACK), $(NAMELIBPSS))
 #LOADLIBSS 		= pss
@@ -128,9 +130,9 @@ LOADLIBFTCOMPLEX 	= ftcomplex
 kLOADLIBARGPA 		= argpar
 
 #MYLIBS			= $(NAMELIBPRINTF) $(NAMELIBFT) $(NAMELIBPSS) $(NAMELIBARGPA)
-MYLIBS			= $(NAMELIBMLIBX) $(NAMELIBPRINTF) $(NAMELIBFTCOMPLEX) 
+MYLIBS			= $(NAMELIBMLIBX) $(NAMELIBPRINTF) $(NAMELIBFTCOMPLEX) $(NAMELIBFT)
 #LLIBS 			= -L$(LIBDIR) -l$(LOADLIBARGPA) -l$(LOADLIBSS) -l$(LOADLIBPRINTF) -l$(LOADLIBFT) 
-LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX) -l$(LOADLIBPRINTF) -l$(LOADLIBFTCOMPLEX)
+LLIBS 			= -L$(LIBDIR) -l$(LOADLIBMLIBX) -l$(LOADLIBPRINTF) -l$(LOADLIBFTCOMPLEX) -l$(LOADLIBFT)
 
 ifeq ($(OPSYS), Darwin)
 	# mac
@@ -222,6 +224,7 @@ makelibs: $(MYLIBS)
 
 $(NAMELIBMLIBX): makelibmlibx $(LIBDIR)$(NAMELIBMLIBX)
 $(NAMELIBPRINTF): makelibftprintf  $(LIBDIR)$(NAMELIBPRINTF)
+$(NAMELIBFT): makelibft  $(LIBDIR)$(NAMELIBFT)
 $(NAMELIBFTCOMPLEX): makelibftcomplex  $(LIBDIR)$(NAMELIBFTCOMPLEX)
 
 makelibmlibx: 
@@ -229,6 +232,9 @@ makelibmlibx:
 
 makelibftprintf:
 	$(MAKE) -C $(SRCDIR_PRINT)
+
+makelibft:
+	$(MAKE) -C $(SRCDIR_LIBFT)
 
 makelibftcomplex:
 	$(MAKE) -C $(SRCDIR_FTCOMPLEX)

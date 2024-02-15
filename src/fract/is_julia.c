@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 13:10:20 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:55:36 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
-int	is_julia(t_complex z, t_complex c, int palette)
+int	is_julia(t_complex z0, t_complex c, int palette)
 {
-	t_complex	z0;
 	t_complex	zn;
 	short		n;
 
-	z0 = z;
 	n = 0;
 	while ((z0.x <= 2) && (z0.y <= 2) && (n <= MAX_ITERATIONS))
 	{

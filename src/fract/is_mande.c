@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 17:56:21 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:08:03 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"

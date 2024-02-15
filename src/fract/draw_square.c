@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 17:57:56 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:22:03 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,36 +59,37 @@ static int	get_color(int fractal, float x, float y, float cx, float cy)
 
 void	draw_fractal(t_win w1)
 {
-	float	x;
-	float	y;
+	float	xo;
+	float	yo;
 	float	rbx;
 	float	rby;
 	float cx;
 	float cy;
 	float color;
-	t_complex	z;
 	t_complex	c;
 
 	cx = calculate_center(w1.w, w1.md_x, &rbx);
 	cy = calculate_center(w1.h, w1.md_y, &rby);
-	z = create(w1.md_x / w1.w, w1.md_y / w1.h);
-	z = create(0, 0);
 	//cx = 2.0 * (w1.w / 3.0);
 	//cy = (w1.h / 2.0);
-	y = 0.0;
-	while (y <= w1.h)
+	yo = 0.0;
+	while (yo <= w1.h)
 	{
-		x = 0.0;
-		while (x <= w1.w)
+		xo = 0.0;
+		while (xo <= w1.w)
 		{
-		    c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
-			color = is_mande(z, c, w1.palette);
-			//color = is_julia(z, c, w1.palette);
-			win_pixel_put(w1, x, y, color); 
+		    //c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
+			//c = create( (xo - (xo + (w1.w / 2))) * (w1.img.real / (w1.w / 2)), 
+			//			(yo - (yo + (w1.h / 2))) * (w1.img.imag / (w1.h / 2)));
+			c = create( (xo - (w1.w / 2)) * (w1.img.real / (w1.w / 2)), 
+						(yo - (w1.h / 2)) * (w1.img.imag / (w1.h / 2)));
+			//color = is_mande(c, w1.z, w1.palette);
+			color = is_julia(c, w1.z, w1.palette);
+			win_pixel_put(w1, xo, yo, color); 
 			//win_pixel_put(w1, x, (w1.h - y) , color); 
-			x++;
+			xo++;
 		}
-		y++;
+		yo++;
 	}
 	mlx_put_image_to_window(w1.mlx_ptr, w1.win_ptr, w1.img.img_ptr, 0, 0);
 }
