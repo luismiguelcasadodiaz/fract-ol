@@ -6,12 +6,13 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 13:22:03 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:24:10 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "mlx.h"
+#include "libft.h"
 
 /* ************************************************************************** */
 /*          a           b                                                     */
@@ -56,7 +57,16 @@ static int	get_color(int fractal, float x, float y, float cx, float cy)
 	return (color);
 }
 */
-
+static int	get_color(t_win w, t_complex c)
+{
+	if (!ft_strncmp(w.title, "Mandelbrot", 10))
+		return (is_mande(c, w.z, w.palette));
+	if (!ft_strncmp(w.title, "Julia", 5))
+		return (is_julia(c, w.z, w.palette));
+	if (!ft_strncmp(w.title, "Ship", 4))
+		return (is_ship(w.z, c, w.palette));
+	return (WHITE);
+}
 void	draw_fractal(t_win w1)
 {
 	float	xo;
@@ -81,10 +91,9 @@ void	draw_fractal(t_win w1)
 		    //c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
 			//c = create( (xo - (xo + (w1.w / 2))) * (w1.img.real / (w1.w / 2)), 
 			//			(yo - (yo + (w1.h / 2))) * (w1.img.imag / (w1.h / 2)));
-			c = create( (xo - (w1.w / 2)) * (w1.img.real / (w1.w / 2)), 
-						(yo - (w1.h / 2)) * (w1.img.imag / (w1.h / 2)));
-			//color = is_mande(c, w1.z, w1.palette);
-			color = is_julia(c, w1.z, w1.palette);
+			c = create( (xo - w1.w_0) * (w1.img.real / w1.w_0), 
+						(yo - w1.h_0) * (w1.img.imag / w1.h_0) );
+			color = get_color(w1, c);
 			win_pixel_put(w1, xo, yo, color); 
 			//win_pixel_put(w1, x, (w1.h - y) , color); 
 			xo++;

@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 12:17:42 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:23:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define RED   0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE  0x000000FF
+# define WHITE 0x00FFFFFF
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
@@ -83,6 +84,8 @@ typedef struct s_win
 	char		*title;
 	int			w;
 	int			h;
+	int			w_0;
+	int			h_0;
 	int			md_x;
 	int			md_y;
 	int			mu_x;
@@ -115,5 +118,6 @@ int		col_get_b(int color);
 
 int		is_mande(t_complex z, t_complex c, int palette);
 int		is_julia(t_complex z, t_complex c, int palette);
+int		is_ship(t_complex z, t_complex c, int palette);
 void	show_usage();
 #endif

@@ -46,11 +46,11 @@ $(NOM):	$(OBJS)
 
 %.o: %.c Makefile 
 	@echo "$(BLUE)MLIBX ========== COMPILING *.c OBJECTS ====================$(DEF_COLOR)"
-	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS)
+	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS) 2> /dev/null
 
 %.o: %.m Makefile 
 	@echo "$(BLUE)MLIBX ========== COMPILING *.m OBJECTS ====================$(DEF_COLOR)"
-	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS)
+	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS) 2> /dev/null
 clean:
 	@echo "$(BLUE)MLIBX ========== CLEANING  *.o OBJECTS ====================$(DEF_COLOR)"
 	rm -f $(OBJS)

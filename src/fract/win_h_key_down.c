@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/14 11:22:44 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:30:07 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ int	win_h_key_down(int	keysym, t_win *w)
 		w->palette = 0x000000FF;
 	if (keysym == KEY_S)
 		w->palette = 0x0003F40B;
+	if (keysym == ARROW_UP)
+		w->h_0 += 10;
+	if (keysym == ARROW_DOWN)
+		w->h_0 -= 10;
+	if (keysym == ARROW_RIGHT)
+		w->w_0 += 10;
+	if (keysym == ARROW_LEFT)
+		w->w_0 -= 10;
 	draw_fractal(*w);
 
 	ft_printf("Key_down: %d\n", keysym);

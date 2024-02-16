@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/15 12:07:07 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/16 10:46:41 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,6 +167,7 @@ SRCS_FRACT	= 	fractol.c \
 				draw_square.c \
 				col_create.c \
 				is_julia.c \
+				is_ship.c \
 				is_mande.c
 
 HEADER_BON	=	fractol_bonus.h

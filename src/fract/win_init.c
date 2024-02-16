@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:49:57 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 12:19:11 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:25:42 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	set_init_values(t_win *w, char *title, int real, int imag)
 	w->title = title;
 	w->w = WINDOW_W;
 	w->h = WINDOW_H;
+	w->w_0 = w->w / 2;
+	w->h_0 = w->h / 2;
 	w->md_x = 0;
 	w->md_y = 0;
 	w->mu_x = 0;

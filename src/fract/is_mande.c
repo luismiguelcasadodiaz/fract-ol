@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 10:08:03 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:52:24 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
@@ -20,6 +20,7 @@
 
    @param[in]  z: a complex number to determine if belongs or not ot the orbit
    of the c complex number.
+   @param[in]  palette: a RGB integer to multiply by escape iterations.
 
    @details
    Loops the 9 times calculating Zn = (Zn-1)2 + C.

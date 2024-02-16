@@ -6,7 +6,7 @@
 /*   By:luicasad<luicasad@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 10:05:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 10:52:39 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:32:31 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_complex
 }	t_complex;
 
 t_complex	create(float x, float y);
+t_complex	absolutize(t_complex a);
 short		equal(t_complex a, t_complex b);
 short		is_a_smaller_than_b(t_complex a, t_complex b);
 t_complex	add(t_complex a, t_complex b);

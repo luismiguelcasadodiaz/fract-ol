@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:13:38 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/12 09:26:28 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:32:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,19 @@ void	print(t_complex a)
 	else
 		printf("%f  %f i\n", a.x, a.y);
 }
+
+t_complex	absolutize(t_complex a)
+{
+	t_complex r;
+
+	if (a.x >= 0)
+		r.x = a.x;
+	else
+		r.x = - a.x;
+	if (a.y >= 0)
+		r.y = a.y;
+	else
+		r.y = - a.y;
+	return (r);
+}
+
