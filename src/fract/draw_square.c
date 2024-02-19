@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 11:24:10 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:42:32 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 /*  x = r * (OW / rb)       2 * (600 / 3) = 400                               */
 /*                                                                            */
 /* ************************************************************************** */
+/*
 static int	calculate_center(int ow, int x, float *rb)
 {
 	float	r;
@@ -37,6 +38,7 @@ static int	calculate_center(int ow, int x, float *rb)
 	r = *rb / ra;
 	return ((int)r * ow / *rb);
 }
+*/
 /*
 static int	get_color(int fractal, float x, float y, float cx, float cy)
 {
@@ -56,7 +58,6 @@ static int	get_color(int fractal, float x, float y, float cx, float cy)
 		color = BLACK;
 	return (color);
 }
-*/
 static int	get_color(t_win w, t_complex c)
 {
 	if (!ft_strncmp(w.title, "Mandelbrot", 10))
@@ -67,15 +68,24 @@ static int	get_color(t_win w, t_complex c)
 		return (is_ship(w.z, c, w.palette));
 	return (WHITE);
 }
-void	draw_fractal(t_win w1)
+*/
+
+void	draw_fractal(t_win w)
 {
-	float	xo;
-	float	yo;
-	float	rbx;
-	float	rby;
-	float cx;
-	float cy;
-	float color;
+	if (!ft_strncmp(w.title, "Mandelbrot", 10))
+		draw_mande(w);
+	//if (!ft_strncmp(w.title, "Julia", 5))
+	//	draw_julia(c, w.z, w.palette);
+	//if (!ft_strncmp(w.title, "Ship", 4))
+	//	draw_ship(w.z, c, w.palette);
+	//return (WHITE);
+/*	float		xo;
+	float		yo;
+	float		rbx;
+	float		rby;
+	float		cx;
+	float		cy;
+	float		color;
 	t_complex	c;
 
 	cx = calculate_center(w1.w, w1.md_x, &rbx);
@@ -88,19 +98,16 @@ void	draw_fractal(t_win w1)
 		xo = 0.0;
 		while (xo <= w1.w)
 		{
-		    //c = create(((x / w1.zoom) - cx) / (w1.w / rbx), -((y / w1.zoom) - cy) / (w1.h / rby));
-			//c = create( (xo - (xo + (w1.w / 2))) * (w1.img.real / (w1.w / 2)), 
-			//			(yo - (yo + (w1.h / 2))) * (w1.img.imag / (w1.h / 2)));
-			c = create( (xo - w1.w_0) * (w1.img.real / w1.w_0), 
-						(yo - w1.h_0) * (w1.img.imag / w1.h_0) );
+			c = create((xo - w1.w_0) * (w1.img.real / w1.w_0), 
+						(yo - w1.h_0) * (w1.img.imag / w1.h_0));
 			color = get_color(w1, c);
-			win_pixel_put(w1, xo, yo, color); 
-			//win_pixel_put(w1, x, (w1.h - y) , color); 
+			win_pixel_put(w1, xo, yo, color);
 			xo++;
 		}
 		yo++;
 	}
 	mlx_put_image_to_window(w1.mlx_ptr, w1.win_ptr, w1.img.img_ptr, 0, 0);
+	*/
 }
 
 void	draw_square_2(t_win w1, t_point ul, t_point lr)

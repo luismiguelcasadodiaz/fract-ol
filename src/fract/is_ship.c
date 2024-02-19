@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 12:59:14 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:16:29 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	is_ship(t_complex z0, t_complex c, int palette)
 		z0 = absolutize(zn);
 		n++;
 	}
-//		print(zn);
 	if (n <= MAX_ITERATIONS)
 		return (n * palette);
 	else

@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:49:57 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 11:25:42 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:15:56 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,44 @@
 
 static void	set_init_values(t_win *w, char *title, int real, int imag)
 {
+	int m_x;
+	int m_y;
+
 	w->title = title;
 	w->w = WINDOW_W;
 	w->h = WINDOW_H;
-	w->w_0 = w->w / 2;
-	w->h_0 = w->h / 2;
+	w->lu_x = 0;
+	w->lu_y = 0;
+	w->rd_x = w->w;
+	w->rd_y = w->h;
 	w->md_x = 0;
 	w->md_y = 0;
 	w->mu_x = 0;
 	w->mu_y = 0;
 	w->mm_x = 0;
 	w->mm_y = 0;
-	w->z = create(1.0 * real / WINDOW_W, 1.0 * imag / WINDOW_H);
+	w->img.z = create(1.0 * real / WINDOW_W, 1.0 * imag / WINDOW_H);
 	w->img.w = w->w;
 	w->img.h = w->h;
-	w->img.real = COMPLEX_REAL_MAX;
-	w->img.imag = COMPLEX_IMAG_MAX;
+	m_x = w->img.w / 2;
+	m_y = w->img.h / 2;
+	w->img.x_0 = m_x;
+	w->img.y_0 = -m_y;
+	w->img.lu_x = -m_x; 
+    w->img.rd_x = m_x; 
+	w->img.lu_y = m_y;
+	w->img.rd_y = -m_y;
+	w->img.real = 2 * COMPLEX_REAL_MAX;
+	w->img.imag = 2 * COMPLEX_IMAG_MAX;
+	w->img.r_x = w->img.real / w->img.w;
+	w->img.r_y = w->img.imag / w->img.h;
 	w->zoom = INITIAL_ZOOM;
+	w->shift_x = 0;
+	w->shift_y = 0; 
+	w->palette = 0x0003F40B;
+	w->iteractions = MAX_ITERATIONS;
 }
+
 /*
 t_win	*win_init(char *title, int wide, int height)
 {
@@ -94,7 +114,6 @@ t_win	win_init(char *title, char *real_txt, char *imag_txt)
 	{
 		free(w.mlx_ptr);
 		exit (-1);
-		//return ((t_win *) NULL);
 	}
 	w.img.img_ptr = mlx_new_image(w.mlx_ptr, w.img.w, w.img.h);
 	if (w.img.img_ptr == NULL)
@@ -102,7 +121,6 @@ t_win	win_init(char *title, char *real_txt, char *imag_txt)
 		free(w.win_ptr);
 		free(w.mlx_ptr);
 		exit (-1);
-		//return ((t_win *) NULL);
 	}
 	w.img.addr = mlx_get_data_addr(w.img.img_ptr,
 			&w.img.bits_per_pixel,

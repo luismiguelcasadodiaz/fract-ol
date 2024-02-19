@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 11:23:33 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:56:41 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define FRACTOL_H
 # define MLX_ERROR 1
 # define INITIAL_ZOOM 1
-# define MAX_ITERATIONS 255
-# define WINDOW_W 600
-# define WINDOW_H 400
+# define MAX_ITERATIONS 5
+# define WINDOW_W 900
+# define WINDOW_H 600
 # define ASPECT_RATIO_1_H 4
 # define ASPECT_RATIO_1_V 3
 
@@ -41,13 +41,21 @@
 # define ON_DESTROY 17
 # include "ft_complex.h"
 
-
 typedef struct s_point
 {
 	int	x;
-	int y;
+	int	y;
 }	t_point;
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                                            */
+/*  real : real axis width. From -2 to 2. starts with 2 * COMPLEX_REAL_MAX    */
+/*  imag : imag axis height. From -i to i. starts with 2 * COMPLEX_IMAG_MAX   */
+/*  r_x  :ratio horizontal real_width / horizontal _width                     */
+/*  r_y  :ratio horizontal imag_width / vertical _width                       */
+/*                                                                            */
+/* ************************************************************************** */
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -57,10 +65,18 @@ typedef struct s_img
 	int		endian;
 	int		w;
 	int		h;
+	int		lu_x;
+	int		lu_y;
+	int		rd_x;
+	int		rd_y;
+	int		x_0;
+	int		y_0;
 	float	real;
 	float	imag;
+	float 	r_x;
+	float 	r_y;
+	t_complex	z;
 }	t_img;
-
 
 /* ************************************************************************** */
 /* w : windows width in pixels                                                */
@@ -72,6 +88,8 @@ typedef struct s_img
 /* mm_x : x coordinate of last mousemove event                                */
 /* mm_y : y coordinate of last mousemove event                                */
 /* zoom : zoom level [1..MAX_ITERATIONS]                                      */
+/* shift_x : horizontal shift requested by LEFT or RIGHT ARROWS               */
+/* shitf_y : vertical shifht requested by UP or DOWN ARROWS                   */
 /* palete : RGB integer to multiply by number of iterations.                  */
 /*                                                                            */
 /* ************************************************************************** */
@@ -84,8 +102,10 @@ typedef struct s_win
 	char		*title;
 	int			w;
 	int			h;
-	int			w_0;
-	int			h_0;
+	int			lu_x;
+	int			lu_y;
+	int			rd_x;
+	int			rd_y;
 	int			md_x;
 	int			md_y;
 	int			mu_x;
@@ -93,16 +113,18 @@ typedef struct s_win
 	int			mm_x;
 	int			mm_y;
 	int			zoom;
+	int			shift_x;
+	int			shift_y;
 	int			palette;
-	t_complex	z;
+	int			iteractions;
 }				t_win;
 t_win	win_init(char *title, char *real_txt, char *imag_txt);
 //t_win	win_init_2(char *title, int wide, int height);
 int		win_h_key_down(int keysym, t_win *data);
 int		win_h_key_up(int keysym, t_win *data);
-int		win_h_mouse_down(int button, int x , int y, t_win *data);
-int		win_h_mouse_up(int button, int x , int y, t_win *data);
-int		win_h_mouse_move(int x , int y, t_win *data);
+int		win_h_mouse_down(int button, int x, int y, t_win *data);
+int		win_h_mouse_up(int button, int x, int y, t_win *data);
+int		win_h_mouse_move(int x, int y, t_win *data);
 int		win_h_not_event(t_win *data);
 int		win_h_expose(t_win *data);
 int		win_h_destroy(t_win *data);
@@ -116,8 +138,9 @@ int		col_get_r(int color);
 int		col_get_g(int color);
 int		col_get_b(int color);
 
-int		is_mande(t_complex z, t_complex c, int palette);
+//int		is_mande(t_complex z, t_complex c, int palette);
+void	draw_mande(t_win w);
 int		is_julia(t_complex z, t_complex c, int palette);
 int		is_ship(t_complex z, t_complex c, int palette);
-void	show_usage();
+void	show_usage(void);
 #endif

@@ -6,12 +6,14 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 10:52:24 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:36:13 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
 #include "fractol.h"
 #include <stdio.h>
+#include "ft_printf.h"
+#include "mlx.h"
 
 /******************************************************************************/
 /**
@@ -32,6 +34,7 @@
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
+/*
 int	is_mande(t_complex c, t_complex z0, int palette)
 {
 	t_complex	zn;
@@ -44,9 +47,73 @@ int	is_mande(t_complex c, t_complex z0, int palette)
 		z0 = zn;
 		n++;
 	}
-//	printf("%d\n ", n);
 	if (n <= MAX_ITERATIONS)
 		return (n * palette);
 	else
 		return (BLACK);
+}
+*/
+
+static void	is_mande(t_win w, int wx0, int wy0, int *n)
+{
+	t_complex	z0;
+	t_complex	zn;
+	t_complex	c;
+	int			ix;
+	int			iy;
+
+	ix = wx0 + w.img.lu_x;
+	iy = - wy0 + w.img.lu_y;
+	*n = 0;
+	z0 = w.img.z;
+	c = create(ix * w.img.r_x / w.zoom, iy * w.img.r_y / w.zoom);
+	while ((z0.x*z0.x + z0.y*z0.y <= 4) && (*n <= w.iteractions))
+	{
+		zn = add(multiply(z0, z0), c);
+		z0 = zn;
+		*n = *n + 1;	
+	}
+}
+
+/******************************************************************************/
+/**
+   @file is_mande.c
+   @brief draw_mande() Calculates if z belongs to the orbit of c.
+
+   @param[in]  w: awindow sruct with axis of coordinates and values to to draw
+   the fractal.
+
+   @details
+
+   Loops from negative ys to positive y
+   	loops from negative xs to positive x
+		for each (x, y) 
+			calculates iterations to define if (x, y) belongs to the set.	
+            color (x, y) accordingly.
+
+   @author LMCD (Luis Miguel Casado Díaz)
+ *****************************************************************************/
+void	draw_mande(t_win w)
+{
+	int			wx0;
+	int			wy0;
+	int 		n;
+
+	ft_printf("(%d, %d) - ( %d, %d) \n  ", w.img.lu_x, w.img.lu_y, w.img.rd_x, w.img.rd_y);
+	wy0 = w.lu_y;
+	while (wy0 <= w.rd_y)
+	{
+		wx0 = w.lu_x;
+		while (wx0 <= w.rd_x)
+		{
+			is_mande(w, wx0, wy0, &n);
+			if (n <= w.iteractions)
+				win_pixel_put(w, wx0, wy0, n * w.palette);
+			else
+				win_pixel_put(w, wx0, wy0, BLACK);
+			wx0++;
+		}
+		wy0++;
+	}
+	mlx_put_image_to_window(w.mlx_ptr, w.win_ptr, w.img.img_ptr, 0, 0);
 }

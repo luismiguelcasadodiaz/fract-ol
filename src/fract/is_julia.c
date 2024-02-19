@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 10:49:52 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:15:35 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	is_julia(t_complex z0, t_complex c, int palette)
 		z0 = zn;
 		n++;
 	}
-//		print(zn);
 	if (n <= MAX_ITERATIONS)
 		return (n * palette);
 	else

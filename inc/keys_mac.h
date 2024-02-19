@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:08:40 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/13 13:03:48 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:56:53 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@
 # define MOUSE_BUTTON_MIDDLE 3
 # define MOUSE_SCROLL_UP 4
 # define MOUSE_SCROLL_DOWN 5
-
 
 #endif

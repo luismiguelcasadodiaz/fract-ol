@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_complex.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:luicasad<luicasad@student.42barcelona.com>  +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 10:05:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/16 10:32:31 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/19 09:59:02 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/19 18:04:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_COMPLEX_H
 # define FT_COMPLEX_H
 # define COMPLEX_REAL_MAX 2.0
-# define COMPLEX_IMAG_MAX 1.0
+# define COMPLEX_IMAG_MAX 2.0
 /* ************************************************************************** */
 /* x: holds the real part of a complex number.                                */
 /* y: holds the imaginary part of a complex number.                           */
@@ -38,4 +38,4 @@ t_complex	divide_by_float(t_complex a, float r);
 t_complex	divide(t_complex a, t_complex b);
 void		print(t_complex a);
 
-# endif
+#endif

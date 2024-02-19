@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/15 10:58:42 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:38:36 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	main(int argc, char **argv)
 {
 	t_win	w;
 
-	if ((argc != 2) && (argc !=4))
+	if ((argc != 2) && (argc != 4))
 	{
 		show_usage();
 		return (0);
 	}
-	else if (argc ==2)
+	else if (argc == 2)
 		w = win_init(argv[1], "0", "0");
 	else
 		w = win_init(argv[1], argv[2], argv[3]);
