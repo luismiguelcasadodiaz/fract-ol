@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/19 18:27:29 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:13:36 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	arrows(int keysym, t_win *w)
 		w->shift_x += 10;
 	}
 	if (keysym == ARROW_RIGHT)
-	{	
+	{
 		w->img.lu_x -= 10;
 		w->img.rd_x -= 10;
 		w->shift_x -= 10;
@@ -58,7 +58,6 @@ static void	iteractions(int keysym, t_win *w)
 		w->iteractions--;
 	w->palette = 0x00FFFFFF / w->iteractions;
 }
-
 
 int	win_h_key_down(int keysym, t_win *w)
 {

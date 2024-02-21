@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:18:09 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/10 11:18:18 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:23:20 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_complex	add(t_complex a, t_complex b)
 
 	c.x = a.x + b.x;
 	c.y = a.y + b.y;
-	c.mod2 = c.x * c.x + c.y * c.y;
 	return (c);
 }
 
@@ -28,6 +27,9 @@ t_complex	substract(t_complex a, t_complex b)
 
 	c.x = a.x + b.x;
 	c.y = a.y + b.y;
-	c.mod2 = c.x * c.x + c.y * c.y;
 	return (c);
+}
+float	mod(t_complex c)
+{
+	return (c.x * c.x + c.y * c.y);
 }

@@ -6,12 +6,11 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/19 18:36:13 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:21:43 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
 #include "fractol.h"
-#include <stdio.h>
 #include "ft_printf.h"
 #include "mlx.h"
 
@@ -62,16 +61,16 @@ static void	is_mande(t_win w, int wx0, int wy0, int *n)
 	int			ix;
 	int			iy;
 
-	ix = wx0 + w.img.lu_x;
-	iy = - wy0 + w.img.lu_y;
+	ix = wx0 +w.shift_x  + w.img.lu_x;
+	iy = -wy0 + w.shift_y + w.img.lu_y;
 	*n = 0;
 	z0 = w.img.z;
 	c = create(ix * w.img.r_x / w.zoom, iy * w.img.r_y / w.zoom);
-	while ((z0.x*z0.x + z0.y*z0.y <= 4) && (*n <= w.iteractions))
+	while ((mod(z0) <= 4) && (*n <= w.iteractions))
 	{
 		zn = add(multiply(z0, z0), c);
 		z0 = zn;
-		*n = *n + 1;	
+		*n = *n + 1;
 	}
 }
 
@@ -95,11 +94,10 @@ static void	is_mande(t_win w, int wx0, int wy0, int *n)
  *****************************************************************************/
 void	draw_mande(t_win w)
 {
-	int			wx0;
-	int			wy0;
-	int 		n;
+	int	wx0;
+	int	wy0;
+	int	n;
 
-	ft_printf("(%d, %d) - ( %d, %d) \n  ", w.img.lu_x, w.img.lu_y, w.img.rd_x, w.img.rd_y);
 	wy0 = w.lu_y;
 	while (wy0 <= w.rd_y)
 	{
