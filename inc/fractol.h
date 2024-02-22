@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/21 10:47:44 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:40:18 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
 # include "ft_complex.h"
+# include <stdlib.h>
 
 typedef struct s_point
 {
@@ -142,4 +143,5 @@ void	draw_julia(t_win w);
 void	draw_ship(t_win w);
 void	draw_white(t_win w);
 void	show_usage(void);
+void	show_data(t_win w);
 #endif

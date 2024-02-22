@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/21 13:21:43 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:43:07 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_complex.h"
@@ -65,7 +65,7 @@ static void	is_mande(t_win w, int wx0, int wy0, int *n)
 	iy = -wy0 + w.shift_y + w.img.lu_y;
 	*n = 0;
 	z0 = w.img.z;
-	c = create(ix * w.img.r_x / w.zoom, iy * w.img.r_y / w.zoom);
+	c = create(ix * w.img.r_x / (w.zoom * 0.5), iy * w.img.r_y / (w.zoom * 0.5));
 	while ((mod(z0) <= 4) && (*n <= w.iteractions))
 	{
 		zn = add(multiply(z0, z0), c);
@@ -97,12 +97,12 @@ void	draw_mande(t_win w)
 	int	wx0;
 	int	wy0;
 	int	n;
-
+	show_data(w);
 	wy0 = w.lu_y;
-	while (wy0 <= w.rd_y)
+	while (wy0 < w.rd_y)
 	{
 		wx0 = w.lu_x;
-		while (wx0 <= w.rd_x)
+		while (wx0 < w.rd_x)
 		{
 			is_mande(w, wx0, wy0, &n);
 			if (n <= w.iteractions)

@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/21 10:07:22 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/22 13:08:46 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,13 @@ vpath %.a $(LIBDIR)
 #                               COMPILER SETUP                                 #
 # ============================================================================ #
 CC 				= cc
-WRNFL			= -Wall -Wextra -Werror
-#WRNFL			= -Wall -Wextra -Werror -fsanitize=address
+#WRNFL			= -Wall -Wextra -Werror
+WRNFL			= -Wall -Wextra -Werror -fsanitize=address
 DBGFL			= -g3 
 CFLGS			= $(DBGFL) $(WRNFL) -c 
 HEADS			= -I$(INCDIR)
 LFLGS 			=
-#LFLGS 			= -fsanitize=address
+LFLGS 			= -fsanitize=address
 ifeq ($(OPSYS), Darwin)
 	FRAMEWORKS		= -framework OpenGL -framework AppKit 
 else
@@ -154,6 +154,7 @@ endif
 HEADER_FRA	=	fractol.h
 SRCS_FRACT	= 	fractol.c \
 				show_usage.c \
+				show_data.c \
 				win_init.c \
 				win_h_key_down.c \
 				win_h_key_up.c \

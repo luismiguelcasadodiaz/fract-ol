@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/21 10:13:36 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:38:08 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ int	win_h_key_down(int keysym, t_win *w)
 		exit (0);
 	}
 	if (keysym == KEY_R)
-		w->palette = 0x00FF0000;
+		w->palette = col_create(0, w->iteractions, 0, 0);
 	if (keysym == KEY_G)
-		w->palette = 0x0000FF00;
+		w->palette = col_create(0, 0,  w->iteractions, 0);
 	if (keysym == KEY_B)
-		w->palette = 0x000000FF;
+		w->palette = col_create(0, 0, 0,  w->iteractions);
 	if (keysym == KEY_S)
 		w->palette = 0x0003F40B;
 	if (keysym == NUMPAD_KEY_PLUS || keysym == NUMPAD_KEY_MINUS)

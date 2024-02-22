@@ -6,22 +6,19 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/21 13:38:17 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:11:26 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "ft_printf.h"
 #include "keys_mac.h"
-
-static void calculate_shift(int x, int y, t_win *w)
+static void	calculate_shift_x(int x, t_win *w)
 {
 	int			ix;
-	int			iy;
 	int			a;
 
 	ix = x + w->img.lu_x;
-	iy = -y + w->img.lu_y;
 	if (ix < w->img.x_0)
 	{
 		a = w->img.x_0 - ix;
@@ -36,10 +33,32 @@ static void calculate_shift(int x, int y, t_win *w)
 		w->img.lu_x -= a;
 		w->img.rd_x -= a;
 	}
+}
+
+static void	calculate_shift_y(int y, t_win *w)
+{
+	int			iy;
+	int			a;
+
+	iy = -y + w->img.lu_y;
 	if (iy < w->img.y_0)
-	   w->shift_y = w->shift_y + (w->img.y_0 - iy);	
+	{   a = w->img.y_0 - iy;
+		w->shift_y += a;
+		w->img.lu_y += a;
+		w->img.rd_y += a;
+	}
 	if (iy >= w->img.y_0)
-	   w->shift_y = w->shift_y - (iy - w->img.y_0);	
+	{   a = iy - w->img.y_0;
+		w->shift_y -= a;
+		w->img.lu_y -= a;
+		w->img.rd_y -= a;
+	}
+}
+
+static void calculate_shift(int x, int y, t_win *w)
+{
+	calculate_shift_x(x, w);
+	calculate_shift_y(y, w);
 }
 
 int	win_h_mouse_down(int button, int x, int y, t_win *w)

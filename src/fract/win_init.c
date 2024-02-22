@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:49:57 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/21 12:57:03 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:42:42 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ static void	set_init_values_img(t_win *w, int real, int imag)
 	int	m_x;
 	int	m_y;
 
+	ft_bzero(&w->img, sizeof(t_img));
+	w->img.img_ptr = NULL;
+	w->img.addr = NULL;
+	w->img.bits_per_pixel = 0;
+	w->img.line_length = 0;
+	w->img.endian = 0;
 	w->img.w = w->w;
 	w->img.h = w->h;
 	m_x = w->img.w / 2;
@@ -69,15 +75,18 @@ t_win	win_init(char *title, char *real_txt, char *imag_txt)
 
 	set_init_values_win(&w, title, ft_atoi(real_txt), ft_atoi(imag_txt));
 	w.mlx_ptr = mlx_init();
+	ft_printf("mlx_init ha devuelto %x\n", w.mlx_ptr);
 	if (w.mlx_ptr == NULL)
 		exit (-1);
 	w.win_ptr = mlx_new_window(w.mlx_ptr, w.w, w.h, w.title);
+	ft_printf("mlx_new_window ha devuelto %x\n", w.win_ptr);
 	if (w.win_ptr == NULL)
 	{
 		free(w.mlx_ptr);
 		exit (-1);
 	}
 	w.img.img_ptr = mlx_new_image(w.mlx_ptr, w.img.w, w.img.h);
+	ft_printf("mlx_new_image ha devuelto %x\n", w.img.img_ptr);
 	if (w.img.img_ptr == NULL)
 	{
 		free(w.win_ptr);
@@ -88,6 +97,7 @@ t_win	win_init(char *title, char *real_txt, char *imag_txt)
 			&w.img.bits_per_pixel,
 			&w.img.line_length,
 			&w.img.endian);
+	ft_printf("bpp =(%d) ll=(%d) endian=(%d), addr=(%s)\n",w.img.bits_per_pixel, w.img.line_length, w.img.endian, w.img.addr);
 	return (w);
 }
 /*	ft_printf("win %s bit per pixel %d, line_length %d endian %d\n",
