@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/22 13:08:46 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/26 00:12:07 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,8 @@ HEADER_FRA	=	fractol.h
 SRCS_FRACT	= 	fractol.c \
 				show_usage.c \
 				show_data.c \
+				point_init.c \
+				point_set.c \
 				win_init.c \
 				win_h_key_down.c \
 				win_h_key_up.c \

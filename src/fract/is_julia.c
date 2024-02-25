@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/22 13:44:42 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:51:19 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static void	is_julia(t_win w, int wx0, int wy0, int *n)
 	int			ix;
 	int			iy;
 
-	ix = wx0 + w.img.lu_x;
-	iy = -wy0 + w.img.lu_y;
+	ix = wx0 + w.shift.x + w.img.lu.x;
+	iy = -wy0 + w.shift.y + w.img.lu.y;
 	*n = 0;
 	c = w.img.z;
-	z0 = create(ix * w.img.r_x / w.zoom, iy * w.img.r_y / w.zoom);
+	z0 = create(ix * w.img.r_x / w.scale, iy * w.img.r_y / w.scale);
 	while ((mod(z0) <= 4) && (*n <= w.iteractions))
 	{
 		zn = add(multiply(z0, z0), c);
@@ -81,11 +81,11 @@ void	draw_julia(t_win w)
 	int	wy0;
 	int	n;
 
-	wy0 = w.lu_y;
-	while (wy0 < w.rd_y)
+	wy0 = w.lu.y;
+	while (wy0 < w.rd.y)
 	{
-		wx0 = w.lu_x;
-		while (wx0 < w.rd_x)
+		wx0 = w.lu.x;
+		while (wx0 < w.rd.x)
 		{
 			is_julia(w, wx0, wy0, &n);
 			if (n <= w.iteractions)

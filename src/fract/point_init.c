@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_move.c                                 :+:      :+:    :+:   */
+/*   point_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:40:21 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 00:45:33 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/26 00:09:55 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/26 00:15:25 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "ft_printf.h"
 
-int	win_h_mouse_move(int x, int y, t_win *w)
+t_point	point_init(void)
 {
-	if ((0 <= x && x <= w->size.x) && (0 <= y && y <= w->size.y))
-		w->mm = point_set(x, y);
-	return (0);
+	return (point_set(0, 0));
 }

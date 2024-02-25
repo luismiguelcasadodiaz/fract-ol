@@ -10,9 +10,10 @@ CFLAGS= -I$(INC) -O3 -I../../inc -g
 
 NAME	= 	fenetre
 SRC 	= 	fenetre.c \
-			../win/win_h_key_press.c \
-			../win/win_h_key_relea.c \
-			../win/win_h_not_event.c
+			win_h_key_down.c \
+			win_h_mouse_down.c \
+			win_h_key_up.c \
+			win_h_not_event.c
 
 OBJ = $(SRC:%.c=%.o)
 

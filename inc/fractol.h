@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/22 13:40:18 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:47:03 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 # define MLX_ERROR 1
 # define INITIAL_ZOOM 1
+# define ZOOM_FACTOR 1.05
 # define MAX_ITERATIONS 5
 # define WINDOW_W 900
 # define WINDOW_H 600
@@ -48,6 +49,9 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
+t_point	point_init(void);
+t_point	point_set(int x, int y);
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
@@ -64,12 +68,9 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		w;
-	int		h;
-	int		lu_x;
-	int		lu_y;
-	int		rd_x;
-	int		rd_y;
+	t_point	size;
+	t_point	lu;
+	t_point	rd;
 	int		x_0;
 	int		y_0;
 	float	real;
@@ -101,21 +102,15 @@ typedef struct s_win
 	void		*win_ptr;
 	t_img		img;
 	char		*title;
-	int			w;
-	int			h;
-	int			lu_x;
-	int			lu_y;
-	int			rd_x;
-	int			rd_y;
-	int			md_x;
-	int			md_y;
-	int			mu_x;
-	int			mu_y;
-	int			mm_x;
-	int			mm_y;
+	t_point		size;
+	t_point		lu;
+	t_point		rd;
+	t_point		md;
+	t_point		mu;
+	t_point		mm;
 	int			zoom;
-	int			shift_x;
-	int			shift_y;
+	float		scale;
+	t_point		shift;
 	int			palette;
 	int			iteractions;
 }				t_win;

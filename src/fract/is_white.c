@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/22 13:31:42 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:31:23 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	draw_white(t_win w)
 	int			wx0;
 	int			wy0;
 
-	wy0 = w.lu_y;
-	while (wy0 < w.rd_y)
+	wy0 = w.lu.y;
+	while (wy0 < w.rd.y)
 	{
-		wx0 = w.lu_x;
-		while (wx0 < w.rd_x)
+		wx0 = w.lu.x;
+		while (wx0 < w.rd.x)
 		{
 			win_pixel_put(w, wx0, wy0, WHITE);
 			wx0++;
@@ -47,5 +47,5 @@ void	draw_white(t_win w)
 		wy0++;
 	}
 	mlx_put_image_to_window(w.mlx_ptr, w.win_ptr, w.img.img_ptr, 0, 0);
-	mlx_string_put(w.mlx_ptr, w.win_ptr, 10, 10, 0x00FF0000, "I can not render it");
+	mlx_string_put(w.mlx_ptr, w.win_ptr, 10, 10, 0x00FF0000, "Does not Exists");
 }

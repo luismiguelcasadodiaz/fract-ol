@@ -39,10 +39,47 @@ This image helps us to get an idea about the window size required for this fract
 
 ![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
-We need to shift de (0,0) origin from our window [(0,0), (600, 400)], situated in the left upper corner, to (400,200) or (600, 300). Then our window will become [(-400, 200), (200, -200)]
+We need to shift de (0,0) origin from our window [(0,0), (600, 400)], situated in the left upper corner, to (400,200) or (600, 300). Then our image will become [(-400, 200), (200, -200)]
 
 Additionally, a translation of pixel coordinates of the new window, [(-400, 200), (200, -200)] into fractal area [(-2, i), (1, -i)] 
 
-# What i read
+
+win (0,0)
+      x-------------------------------------------------------------------x
+	  |          ^                                                        |
+	  |          |                                                        |
+	  |          |                                                        |
+	  |          |                                                        |
+	  |        offsety                                                    |
+	  |          |                                                        |
+	  |          |   x(15, 7)                                             |
+	  |          |                                                        |
+	  |          v img(0,0)                                               |
+	  |<-offsetx>#........................................................|..................#
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .                                                        |                  .
+	  |          .               # (15,7)                                 |                  .
+	  x-------------------------------------------------------------------xwin (600, 400)    .
+	             .                                                                           .
+	             .                                                                           .
+	             .                                                                           .
+	             .                                                                           .
+		         #...........................................................................#
+
+At zero zoom the relationship between win and img is 1:1
+
+img2win transformation ==> x = # - offsets
+win2img transformation ==> # = x + offsets
+
+# What i read/watch
 
 [Monitor aspect ratio, dpi, resolution ](https://www.viewsonic.com/library/tech/monitor-resolution-aspect-ratio/)
+[zooming & Panning](https://www.youtube.com/watch?v=ZQ8qtAizis4&t=1326s)
+
+
+

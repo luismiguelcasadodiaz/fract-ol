@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 10:28:52 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/05 17:15:59 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:35:19 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 
 int	main(void)
 {
-	t_data	win1;
-	t_data 	win2;
+	t_win	win1;
+	t_win 	win2;
 	void	*mlx_ptr;
 
 	mlx_ptr = mlx_init();
@@ -62,7 +62,8 @@ int	main(void)
 	*/
 	int factorial = 80;
 	mlx_loop_hook(win1.mlx_ptr, &win_h_not_event, &win1);
-	mlx_key_hook(win1.win_ptr, &win_h_key_press, &win1);
+	mlx_key_hook(win1.win_ptr, &win_h_key_up, &win1);
+	mlx_mouse_hook(win1.win_ptr, &win_h_mouse_down, &win1);
 	mlx_loop(win1.mlx_ptr);
 	mlx_destroy_window(win1.mlx_ptr, win1.win_ptr);
 	mlx_destroy_display(win1.mlx_ptr);
