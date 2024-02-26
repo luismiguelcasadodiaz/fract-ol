@@ -30,7 +30,31 @@ MANDATORY_MANPATH /home/luis/Documentos/c/cursus/circle3/fract-ol/src/minilibx-l
 
 7.- Play with the 3 windows `test/mlx-test` the configuration process has created and study `main.c` that created them. 
 
+8.- Identify key codes for future iteraction wiht images. Do it in 42 and in your home. I separated codes in two files `keys_mac.h` and `keys_ubuntu.h`
+
+9.- Hooks setting differs from Mac to linux in event masks. Be aware of such circunstance.
+
+For mac : 
+```c 
+	mlx_hook(w.win_ptr, ON_KEYDOWN, 0, &win_h_key_down, &w);
+```
+For linux:
+```c
+	mlx_hook(w.win_ptr, ON_KEYDOWN, (1L << 0), &win_h_key_down, &w);
+```
+
 https://www.youtube.com/watch?v=FFftmWSzgmk
+
+# The complex numbers
+I create a basic complex library to help me to simplify fractal formulas : create, add, multiply, absolutize (for the ship fractal) print ....
+
+```c
+typedef struct s_complex
+{
+	float	x;
+	float	y;
+}	t_complex;
+```
 
 
 ## Mandelbrot
@@ -46,7 +70,7 @@ Additionally, a translation of pixel coordinates of the new window, [(-400, 200)
 
 win (0,0)
 
-      x-------------------------------------------------------------------x
+          x-------------------------------------------------------------------x
       	  |          ^                                                        |
    	  |          |                                                        |
    	  |          |                                                        |
@@ -70,12 +94,21 @@ win (0,0)
 	             .                                                                           .
 	             .                                                                           .
 	             .                                                                           .
-		         #...........................................................................#
+		     #...........................................................................#
 
 At zero zoom the relationship between win and img is 1:1
 
 img2win transformation ==> x = # - offsets
 win2img transformation ==> # = x + offsets
+
+
+## Julia
+
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/ed492569-6722-4455-a8a7-71cb64c544e8">
+
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/d9d74f45-8ea8-47fc-baaa-334d72dfb73b">
+
+
 
 # What i read/watch
 
