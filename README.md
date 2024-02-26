@@ -156,7 +156,10 @@ typedef struct s_win
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/b5d1a9ff-39fe-40bd-b26d-e3d2f4431f45">
 
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/6d9caa63-1f30-4787-9fc0-ffbb1e1a4c3a">
+## zoom=55 n=55
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/2255a427-47cb-456b-b604-f89bcfb11e26">
+## zoom=80 n=100
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/8db93869-72fa-4f3a-8089-c8bd022226e7">
 
 
 ## Julia
