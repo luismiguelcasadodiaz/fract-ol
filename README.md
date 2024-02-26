@@ -74,7 +74,7 @@ Additionally, a translation of pixel coordinates of the new window, [(-400, 200)
 win (0,0)
 
           x-------------------------------------------------------------------x
-      	  |          ^                                                        |
+	  |          ^                                                        |
    	  |          |                                                        |
    	  |          |                                                        |
    	  |          |                                                        |
@@ -149,9 +149,36 @@ typedef struct s_win
 	int			iteractions;
 }				t_win;
 ```
+## the fracta concept
+
+It is a iterative calculation that uses the previous result of the same calculation
+
+| Conjunto Mandelbrot       | Conjunto Julia de parametro c |
+|:--------------------------|:------------------------------|
+|                           |                               |
+|z0   = 0                   |z0   = z                       |
+|z1   = F(z0) = z0^2 + c    |z1   = F(z0) = z0^2 + c        |
+|z2   = F(z1) = z1^2 + c    |z2   = F(z1) = z1^2 + c        |    
+|       ...                 |                               |
+|       ...                 |                               |
+|zn+1 = F(zn) = zn^2 + c    |zn+1 = F(zn) = zn^2 + c        |
+
+The higher the n, the higher resolution the fractal will have and the higher workload for yor computer.
+The function loops thru n till MAX iterations or when the module of the Z complex is > 4. 
+
+If mod(z) does not growth .....
+
+c belongs to Mandelbrot set.
+
+Initial z belongs to Juia set of parameter c.
+
+In this case c (when Mandelbrot) or Z when (Julia) get BLACK color. Otherwise C or Z get a color from a palette. Ths color with the index of the nth iterations that made mod(z) > 4.
+
+
+
+![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
 ## Mandelbrot
-![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/b5d1a9ff-39fe-40bd-b26d-e3d2f4431f45">
 
