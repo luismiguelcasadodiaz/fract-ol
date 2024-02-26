@@ -149,7 +149,7 @@ typedef struct s_win
 	int			iteractions;
 }				t_win;
 ```
-## the fracta concept
+## The fractal concept
 
 It is a iterative calculation that uses the previous result of the same calculation
 
@@ -174,7 +174,7 @@ Initial z belongs to Juia set of parameter c.
 
 In this case c (when Mandelbrot) or Z when (Julia) get BLACK color. Otherwise C or Z get a color from a palette. Ths color with the index of the nth iterations that made mod(z) > 4.
 
-
+This image shows range of real an imaginary axis in the complex numbers world.
 
 ![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
