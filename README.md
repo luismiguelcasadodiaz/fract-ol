@@ -153,6 +153,11 @@ typedef struct s_win
 # Mandelbrot
 ![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/b5d1a9ff-39fe-40bd-b26d-e3d2f4431f45">
+
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/6d9caa63-1f30-4787-9fc0-ffbb1e1a4c3a">
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/2255a427-47cb-456b-b604-f89bcfb11e26">
+
 
 ## Julia
 
