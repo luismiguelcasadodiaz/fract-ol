@@ -102,10 +102,57 @@ win (0,0)
 At zero zoom the relationship between win and img is 1:1
 
 img2win transformation ==> x = # - offsets
+
 win2img transformation ==> # = x + offsets
+
+To support this three references i defined one struct for the image,
+
+``` c
+typedef struct s_img
+{
+	void		*img_ptr;
+	char		*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	t_point		size;
+	t_point		lu;
+	t_point		rd;
+	int		x_0;
+	int		y_0;
+	float		real;
+	float		imag;
+	float		r_x;
+	float		r_y;
+	t_complex	z;
+}	t_img;
+```
+and other for the window
+
+```c
+typedef struct s_win
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img		img;
+	char		*title;
+	t_point		size;
+	t_point		lu;
+	t_point		rd;
+	t_point		md;
+	t_point		mu;
+	t_point		mm;
+	int			zoom;
+	float		scale;
+	t_point		shift;
+	int			palette;
+	int			iteractions;
+}				t_win;
+```
 
 # Mandelbrot
 ![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
+
 
 ## Julia
 
