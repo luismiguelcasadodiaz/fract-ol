@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_down.c                                 :+:      :+:    :+:   */
+/*   col_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:26 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/06 11:49:06 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/10 11:26:00 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include <stdio.h>
-#include "keys_ubuntu.h"
-
-int	win_h_mouse_down(int button, int x, int y, t_win *w)
+int	col_create(int t, int r, int g, int b)
 {
-	printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);
-	return (0);
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	col_get_t(int color)
+{
+	return ((color >> 24) & 0xFF);
+}
+
+int	col_get_r(int color)
+{
+	return ((color >> 16) & 0xFF);
+}
+
+int	col_get_g(int color)
+{
+	return ((color >> 8) & 0xFF);
+}
+
+int	col_get_b(int color)
+{
+	return (color & 0xFF);
 }

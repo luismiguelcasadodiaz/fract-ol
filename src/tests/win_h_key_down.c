@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:19:34 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/25 18:55:28 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:28:13 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "fractol.h"
 #include <stdio.h>
 #include "mlx.h"
-
 
 int	win_h_key_down(int keysym, t_win *w)
 {

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_down.c                                 :+:      :+:    :+:   */
+/*   win_h_mouse_move.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:26 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/06 12:40:21 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/26 00:45:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
-#include "keys_ubuntu.h"
+#include "ft_printf.h"
 
-int	win_h_mouse_down(int button, int x, int y, t_win *w)
+int	win_h_mouse_move(int x, int y, t_win *w)
 {
-	printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);
+	if ((0 <= x && x <= w->size.x) && (0 <= y && y <= w->size.y))
+		w->mm = point_set(x, y);
 	return (0);
 }

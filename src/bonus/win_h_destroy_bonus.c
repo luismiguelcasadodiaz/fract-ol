@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_down.c                                 :+:      :+:    :+:   */
+/*   win_h_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:26 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/07 12:14:23 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/14 11:34:49 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
-#include "keys_ubuntu.h"
+#include "mlx.h"
+#include <stdlib.h>
 
-int	win_h_mouse_down(int button, int x, int y, t_win *w)
+int	win_h_destroy(t_win *w)
 {
-	printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);
-	return (0);
+	mlx_destroy_window(w->mlx_ptr, w->win_ptr);
+	free(w->mlx_ptr);
+	exit (0);
 }

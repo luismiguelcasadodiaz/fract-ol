@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 00:51:19 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:29:16 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	draw_julia(t_win w)
 	int	wy0;
 	int	n;
 
+	if (w.md.x != 0 || w.md.y != 0)
+		w.img.z = create(1.0 * w.md.x / WINDOW_W, 1.0 * w.md.y / WINDOW_H);
 	wy0 = w.lu.y;
 	while (wy0 < w.rd.y)
 	{

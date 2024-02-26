@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_down.c                                 :+:      :+:    :+:   */
+/*   win_h_expose.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:26 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/14 11:42:08 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/14 11:43:26 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
-#include "keys_ubuntu.h"
+#include "mlx.h"
+#include <stdlib.h>
 
-int	win_h_mouse_down(int button, int x, int y, t_win *w)
+int	win_h_expose(t_win *w)
 {
-	printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);
+	draw_fractal(*w);
 	return (0);
 }

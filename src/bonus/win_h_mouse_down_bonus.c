@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 14:57:10 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:09:33 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	win_h_mouse_down(int button, int x, int y, t_win *w)
 	}
 	else if (button == MOUSE_BUTTON_LEFT)
 	{
-		w->md = point_set(x, y);
 		draw_fractal(*w);
 	}
 	ft_printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);

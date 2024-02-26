@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 18:16:38 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/15 12:22:10 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/26 11:34:29 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #MAKEFLAGS += rR
@@ -137,14 +137,14 @@ include $(SRCS:.c=.d)
 #   Therefore, rcs can be seen to mean replace, create, sort
 
 $(NAME): $(OBJS) 
-	@echo "$(BLUE)LIBFT ========== GATHERING ALL OBJECTS ====================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ========== GATHERING ALL OBJECTS ====================$(DEF_COLOR)"
 	ar rcs $(LIBDIR)$(NAME) $?
 
 
 # For each c file create its object file.
 #$(OBJS): $(SRCS) 
 %.o: %.c Makefile 
-	@echo "$(BLUE)LIBFT ========== COMPILING ALL OBJECTS ====================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ========== COMPILING ALL OBJECTS ====================$(DEF_COLOR)"
 	$(CC) $(CFLAGS)  -c $< -o $@ $(HEADS)
 
 #for each c file create its dependency file 
@@ -158,19 +158,19 @@ $(NAME): $(OBJS)
 
 # removes all generated object files
 clean:
-	@echo "$(BLUE)LIBFT ========== REMOVING ALL OBJECTS =====================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ========== REMOVING ALL OBJECTS =====================$(DEF_COLOR)"
 	rm -f $(OBJS)
 	rm -f *.d
 
 # removes target file and all generated object files
 fclean: clean
-	@echo "$(BLUE)LIBFT ========== REMOVING TARGET ==========================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ========== REMOVING TARGET ==========================$(DEF_COLOR)"
 	rm -f $(LIBDIR)$(NAME) # rebuild all after removing all
 re: fclean all
-	@echo "$(BLUE)LIBFT ================ REBUILDING =========================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ================ REBUILDING =========================$(DEF_COLOR)"
 
 norma:
-	@echo "$(BLUE)LIBFT ============== CHECKING NORME =======================$(DEF_COLOR)"
+	@echo "$(BROWN)LIBFT ============== CHECKING NORME =======================$(DEF_COLOR)"
 	norminette $(SRCS)
 .PHONY: all clean fclean re
 

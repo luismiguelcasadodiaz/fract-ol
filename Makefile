@@ -6,7 +6,7 @@
 #    By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 13:07:33 by luicasad          #+#    #+#              #
-#    Updated: 2024/02/26 00:12:07 by luicasad         ###   ########.fr        #
+#    Updated: 2024/02/26 16:53:32 by luicasad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,7 +167,7 @@ SRCS_FRACT	= 	fractol.c \
 				win_h_destroy.c \
 				win_h_expose.c \
 				win_pixel_put.c \
-				draw_square.c \
+				draw_fractal.c \
 				col_create.c \
 				is_julia.c \
 				is_ship.c \
@@ -175,7 +175,27 @@ SRCS_FRACT	= 	fractol.c \
 				is_white.c
 
 HEADER_BON	=	fractol_bonus.h
-SRCS_BONUS	 =	fractol_bonus.c
+SRCS_BONUS	 =	fractol_bonus.c \
+				show_usage_bonus.c \
+				show_data_bonus.c \
+				point_init_bonus.c \
+				point_set_bonus.c \
+				win_init_bonus.c \
+				win_h_key_down_bonus.c \
+				win_h_key_up_bonus.c \
+				win_h_mouse_down_bonus.c \
+				win_h_mouse_up_bonus.c \
+				win_h_mouse_move_bonus.c \
+				win_h_not_event_bonus.c \
+				win_h_destroy_bonus.c \
+				win_h_expose_bonus.c \
+				win_pixel_put_bonus.c \
+				draw_fractal_bonus.c \
+				col_create_bonus.c \
+				is_julia_bonus.c \
+				is_ship_bonus.c \
+				is_mande_bonus.c \
+				is_white_bonus.c
 
 HEADER_TES	=	fenetre.h
 SRCS_TESTS	=	fenetre.c
@@ -300,25 +320,24 @@ clean:
 	rm -rf $(OBJDIR)
 	$(MAKE) -C $(SRCDIR_MLIBX) clean
 	$(MAKE) -C $(SRCDIR_PRINT) clean
+	$(MAKE) -C $(SRCDIR_LIBFT) clean
+	$(MAKE) -C $(SRCDIR_FTCOMPLEX) clean
 
 
 fclean: clean
-	$(MAKE) -C $(SRCDIR_MLIBX) fclean
-	$(MAKE) -C $(SRCDIR_PRINT) fclean
 	rm -f $(FRACT)
 	rm -f $(BONUS)
 	rm -f $(TESTS)
 	rm -rf $(LIBDIR)
-	rmdir $(LIBDIR)
 	rm -rf $(OBJDIR)
-	rmdir $(OBJDIR)
 
 re: fclean all
 
+rebonus : fclean bonus
 
 norma:
-	$(MAKE) -C $(SRCDIR_MLIBX)  norma
-	$(MAKE) -C $(SRCDIR_FTPRINTF)  norma
+	#$(MAKE) -C $(SRCDIR_MLIBX)  norma
+	$(MAKE) -C $(SRCDIR_PRINT)  norma
 	$(MAKE) -C $(SRCDIR_FTCOMPLEX)  norma
 	@echo "$(GREEN)============ CHECKING NORME $(FRACT) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_FRACT) 
@@ -327,3 +346,6 @@ norma:
 	@echo "$(MAGENTA)========== CHECKING NORME $(TESTS) ==============$(DEF_COLOR)"
 	norminette $(SRCDIR_TESTS)
 	norminette $(INCDIR)
+
+.PHONY: all bonus test clean fclean re rebonus norma
+

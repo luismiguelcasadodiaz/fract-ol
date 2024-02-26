@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   win_h_mouse_down.c                                 :+:      :+:    :+:   */
+/*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 12:32:45 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:26 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/06 11:13:27 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/26 12:47:57 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
-#include "keys_ubuntu.h"
+#include "mlx.h"
+#include "libft.h"
 
-int	win_h_mouse_down(int button, int x, int y, t_win *w)
+void	draw_fractal(t_win w)
 {
-	printf("dowm (%d, %d) button %d zoom %d \n", x, y, button, w->zoom);
-	return (0);
+	show_data(w);
+	if (!ft_strncmp(w.title, "Mandelbrot", 10))
+		draw_mande(w);
+	else if (!ft_strncmp(w.title, "Julia", 5))
+		draw_julia(w);
+	else
+		draw_white(w);
+	return ;
 }

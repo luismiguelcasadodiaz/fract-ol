@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 00:47:03 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:35:29 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ t_point	point_set(int x, int y);
 /* ************************************************************************** */
 typedef struct s_img
 {
-	void	*img_ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	t_point	size;
-	t_point	lu;
-	t_point	rd;
-	int		x_0;
-	int		y_0;
-	float	real;
-	float	imag;
-	float 	r_x;
-	float 	r_y;
+	void		*img_ptr;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	t_point		size;
+	t_point		lu;
+	t_point		rd;
+	int			x_0;
+	int			y_0;
+	float		real;
+	float		imag;
+	float		r_x;
+	float		r_y;
 	t_complex	z;
 }	t_img;
 

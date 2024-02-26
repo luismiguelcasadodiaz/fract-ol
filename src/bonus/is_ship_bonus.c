@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_mande.c                                         :+:      :+:    :+:   */
+/*   is_ship.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
+/*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 09:13:17 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:48:46 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/10 09:56:29 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/26 00:51:54 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_complex.h"
 #include "fractol.h"
 #include "ft_printf.h"
@@ -16,24 +17,27 @@
 
 /******************************************************************************/
 /**
-   @file is_mande.c
-   @brief is_mande() Calculates if z belongs to the orbit of c.
+   @file is_ship.c
+   @brief is_ship() Calculates if z belongs to the orbit of c.
 
    @param[in]  z: a complex number to determine if belongs or not ot the orbit
    of the c complex number.
+   @param[in]  c: a complex number to determine if z belongs to c's orbit.
    @param[in]  palette: a RGB integer to multiply by escape iterations.
 
    @details
-   Loops the 9 times calculating Zn = (Zn-1)2 + C.
-   Verifies if it is a growing secuence.
+   Loops MAX_ITERATIONS times calculating 
+   Zn = (|Re(Zn)| + i|Im(Zn)|)2 + C 
+   while the real and the imaginary part of Zn are smaller than 2.
 
-   if it is not a growing secuence returns zero, (black color).
-   if it is a growing secuence returns a color. A color made of the bigger
-   number of the secuence module 255 * 255 * 255 (RGB NUM COLORS)
+   if either the real or the imaginary part 'Escape' the boundaries (<= 2) then
+   z does not belong to the ship set and deserves a color.
+   if loop exhausts the iterations then z belongs to the ship set and gets the
+   black color.
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
-static void	is_mande(t_win w, int wx0, int wy0, int *n)
+static void	is_ship(t_win w, int wx0, int wy0, int *n)
 {
 	t_complex	z0;
 	t_complex	zn;
@@ -49,15 +53,15 @@ static void	is_mande(t_win w, int wx0, int wy0, int *n)
 	while ((mod(z0) <= 4) && (*n <= w.iteractions))
 	{
 		zn = add(multiply(z0, z0), c);
-		z0 = zn;
-		*n = *n + 1;
+		z0 = absolutize(zn);
+		(*n)++;
 	}
 }
 
 /******************************************************************************/
 /**
-   @file is_mande.c
-   @brief draw_mande() Calculates if z belongs to the orbit of c.
+   @file is_ship.c
+   @brief draw_ship() Calculates if z belongs to the orbit of c.
 
    @param[in]  w: awindow sruct with axis of coordinates and values to to draw
    the fractal.
@@ -72,7 +76,7 @@ static void	is_mande(t_win w, int wx0, int wy0, int *n)
 
    @author LMCD (Luis Miguel Casado Díaz)
  *****************************************************************************/
-void	draw_mande(t_win w)
+void	draw_ship(t_win w)
 {
 	int	wx0;
 	int	wy0;
@@ -84,7 +88,7 @@ void	draw_mande(t_win w)
 		wx0 = w.lu.x;
 		while (wx0 < w.rd.x)
 		{
-			is_mande(w, wx0, wy0, &n);
+			is_ship(w, wx0, wy0, &n);
 			if (n <= w.iteractions)
 				win_pixel_put(w, wx0, wy0, n * w.palette);
 			else

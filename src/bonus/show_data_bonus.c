@@ -6,13 +6,12 @@
 /*   By: luicasad <luicasad@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:24:03 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 13:05:39 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:23:10 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "ft_printf.h"
-#include "ft_complex.h"
 
 void	show_data(t_win w)
 {
@@ -34,6 +33,5 @@ void	show_data(t_win w)
 	ft_printf("ll=(%d)\n", w.img.line_length);
 	ft_printf("endian=(%d)\n", w.img.endian);
 	ft_printf(" addr=(%s)\n", w.img.addr);
-	print(w.img.z);
 	ft_printf("===============================\n");
 }

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_subs.c                                         :+:      :+:    :+:   */
+/*   point_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 11:18:09 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 11:59:45 by luicasad         ###   ########.fr       */
+/*   Created: 2024/02/26 00:09:55 by luicasad          #+#    #+#             */
+/*   Updated: 2024/02/26 00:53:49 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_complex.h"
+#include "fractol.h"
 
-t_complex	add(t_complex a, t_complex b)
+t_point	point_set(int x, int y)
 {
-	t_complex	c;
+	t_point	a;
 
-	c.x = a.x + b.x;
-	c.y = a.y + b.y;
-	return (c);
-}
-
-t_complex	substract(t_complex a, t_complex b)
-{
-	t_complex	c;
-
-	c.x = a.x + b.x;
-	c.y = a.y + b.y;
-	return (c);
-}
-
-float	mod(t_complex c)
-{
-	return (c.x * c.x + c.y * c.y);
+	a.x = x;
+	a.y = y;
+	return (a);
 }
