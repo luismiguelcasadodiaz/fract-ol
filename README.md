@@ -1,7 +1,7 @@
 # fract-ol
 This project is about creating graphically beautiful fractals.
 
-# First Steps
+## First Steps
 1.- Download libraries to `fract-ol/src` directory
 
 minilibx-linux.tgz
@@ -45,7 +45,7 @@ For linux:
 
 https://www.youtube.com/watch?v=FFftmWSzgmk
 
-# The complex numbers
+## The complex numbers
 I create a basic complex library to help me to simplify fractal formulas : create, add, multiply, absolutize (for the ship fractal) print ....
 
 ```c
@@ -150,7 +150,7 @@ typedef struct s_win
 }				t_win;
 ```
 
-# Mandelbrot
+## Mandelbrot
 ![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/b5d1a9ff-39fe-40bd-b26d-e3d2f4431f45">
@@ -178,11 +178,25 @@ typedef struct s_win
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/da99b372-dc25-4ed5-8684-782744a0482c">
 
 
-# What i read/watch
+## What i read/watch
 
 [Monitor aspect ratio, dpi, resolution ](https://www.viewsonic.com/library/tech/monitor-resolution-aspect-ratio/)
 
 [zooming & Panning](https://www.youtube.com/watch?v=ZQ8qtAizis4&t=1326s)
 
 
+[one minilibx tutorial ](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
 
+[other tutorial](https://03-jon-perez.gitbook.io/coding-library/c/minilibx)
+
+[otheer minilibx tutorial ](https://harm-smits.github.io/42docs/libs/minilibx)
+
+##  What i learnt.
+
+In this proyect i started to used sanitize flag at compilation time. That helps me to find memory leaks and segmentation fault.
+
+I added man pages to man path.
+
+i discover vim -p *.c to open all files in the folder one shot.
+
+There are differences betwenn keycodes in differente OS.
