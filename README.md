@@ -57,11 +57,14 @@ typedef struct s_complex
 ```
 
 
-## Mandelbrot
+## Three reference axis
+
+I have to deal with 3 reference axis. The windows axis, the image axis, and the complex (real / imaginary axis)
+
 This image helps us to get an idea about the window size required for this fractal. It will have a ratio aspect of 3:2 (600:400 || 900:600).
 
 
-![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
+
 
 We need to shift de (0,0) origin from our window [(0,0), (600, 400)], situated in the left upper corner, to (400,200) or (600, 300). Then our image will become [(-400, 200), (200, -200)]
 
@@ -101,6 +104,8 @@ At zero zoom the relationship between win and img is 1:1
 img2win transformation ==> x = # - offsets
 win2img transformation ==> # = x + offsets
 
+# Mandelbrot
+![image](https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/71151d52-f132-4459-a7dc-228fb8f0cac5)
 
 ## Julia
 
@@ -112,9 +117,16 @@ win2img transformation ==> # = x + offsets
 
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/7c0e44b4-e4b7-4bc2-ac74-99f143b1ed72">
 
+## Ship
+
+
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/da99b372-dc25-4ed5-8684-782744a0482c">
+
+
 # What i read/watch
 
 [Monitor aspect ratio, dpi, resolution ](https://www.viewsonic.com/library/tech/monitor-resolution-aspect-ratio/)
+
 [zooming & Panning](https://www.youtube.com/watch?v=ZQ8qtAizis4&t=1326s)
 
 
