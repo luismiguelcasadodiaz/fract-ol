@@ -6,7 +6,7 @@
 /*   By: luicasad <luicasad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:47:24 by luicasad          #+#    #+#             */
-/*   Updated: 2024/02/26 12:35:29 by luicasad         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:52:39 by luicasad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define MLX_ERROR 1
 # define INITIAL_ZOOM 1
 # define ZOOM_FACTOR 1.05
-# define MAX_ITERATIONS 5
+# define MAX_ITERATIONS 2
 # define WINDOW_W 900
 # define WINDOW_H 600
 # define ASPECT_RATIO_1_H 4
