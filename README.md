@@ -108,7 +108,9 @@ win2img transformation ==> # = x + offsets
 
 <img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/d9d74f45-8ea8-47fc-baaa-334d72dfb73b">
 
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/a375cb1d-eefc-409b-845c-a4f65791ad2d">
 
+<img width="900" alt="image" src="https://github.com/luismiguelcasadodiaz/fract-ol/assets/19540140/7c0e44b4-e4b7-4bc2-ac74-99f143b1ed72">
 
 # What i read/watch
 
